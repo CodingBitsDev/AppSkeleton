@@ -12,3 +12,13 @@ web-report/
 
 # macOS
 .DS_Store
+
+#vim
+*~
+*.swp
+*.*.swp
+*.swo
+*.*.swo
+
+#yarn
+yarn.lock
