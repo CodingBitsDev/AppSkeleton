@@ -12,7 +12,7 @@ import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 function HomeScreen(props) {
   return (
     <SafeAreaView style={{backgroundColor:"blue", flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen {"\n" + props.test}</Text>
+      <Text>Home Screen</Text>
       <Button
         onPress={ () => { props.navigation.dispatch(openHomeScreen2()) } }
         title="Open Home Screen 2"
@@ -35,6 +35,5 @@ function popupContent(props){
 
 export default connect((store) => {
   return {
-    test: store.dummyReducer.textValue,
   };
 })(HomeScreen);
