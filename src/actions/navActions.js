@@ -76,12 +76,13 @@ export function openPopup(navigation, content, data){
 //************************
 //*****PureNavActions*****
 //************************
+
+//MainScreens
 export function openHomeScreen() {
   return CommonActions.navigate({
     name: 'HomeScreen',
     key: 'HomeScreen',
     params: {
-      //Important params that the screen needs
     }
   });
 }
@@ -91,7 +92,25 @@ export function openHomeScreen2() {
     name: 'HomeScreen2',
     key: 'HomeScreen2',
     params: {
-      //Important params that the screen needs
     }
   });
 }
+
+// AuthScreens
+export function openSignInScreen() {
+  return CommonActions.navigate({
+    name: 'SignIn',
+    key: 'SignIn',
+    params: {
+    }
+  });
+}
+export function openSignUpScreen() {
+  return CommonActions.navigate({
+    name: 'SignUp',
+    key: 'SignUp',
+    params: {
+    }
+  });
+}
+
