@@ -6,7 +6,7 @@ import HomeScreen from "../screens/HomeScreen.js";
 import HomeScreen2 from "../screens/HomeScreen2.js";
 
 const Stack = createStackNavigator();
-let StackNavigator = () => {
+let MainStackNavigator = () => {
   return (
     <Stack.Navigator >
       <Stack.Screen 
@@ -29,4 +29,4 @@ let StackNavigator = () => {
 export default connect((store) => {
   return {
   };
-})(StackNavigator);
+})(MainStackNavigator);

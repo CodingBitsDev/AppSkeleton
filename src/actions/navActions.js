@@ -54,7 +54,6 @@ export function goBackAndOpen( navAction ){
 
 export function openPopup(navigation, content, data){
   let { closeOnOutsidePress, closeOnBackPress } = data || {};
-  console.log(closeOnOutsidePress, closeOnBackPress)
   return( (dispatch, getState) => {
     dispatch({
       type:"SET_POPUP_CONTENT",

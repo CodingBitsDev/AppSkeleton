@@ -8,25 +8,13 @@ const INITIAL_STATE = {
 
 export default function reducer(state=INITIAL_STATE , action) {
   switch (action.type) {
-    case "NAVIGATE":{
-      return {...state,
-        currentNavAction: action,
-      };
-    }
-    case "RESET":{
-      return {...state,
-        currentNavAction: action,
-      };
-    }
-    case "GO_BACK":{
-      return {...state,
-        currentNavAction: action,
-      };
-    }
     case "NAV_STATE_CHANGED":{
       return {...state,
         navState: action.payload.navState,
       }
+    }
+    case 'persist/REHYDRATE': {
+      return {...state, }
     }
   }
   return state;

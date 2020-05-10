@@ -4,17 +4,20 @@ import { BackHandler, Dimensions, StyleSheet, View, Text,TouchableWithoutFeedbac
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-function Popup( props ){
-  let navigation = props.navigation;
-  let params = ( props.route && props.route.params ) || {};
+function Popup( { navigation, route, ...props } ){
+  let params = route && route.params || {};
   let {closeOnOutsidePress, closeOnBackPress} = params;
 
   let content = null;
   if (props.popupContent){
     content = React.cloneElement(
       props.popupContent, 
-      { navigation: props.navigation }
+      { navigation: navigation }
     );
+  }
+  else {
+    console.warn("PopupContent not Set")
+    navigation.pop()
   }
 
   useEffect( () => {

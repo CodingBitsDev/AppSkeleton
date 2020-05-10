@@ -16,6 +16,9 @@ export default function reducer(state=INITIAL_STATE , action) {
       case "CHANGE_HOMEWORK_STATE": {
         return {...state, homeWorkState: {...ation.payload} };
       }
+      case 'persist/REHYDRATE': {
+        return {...state, }
+      }
     }
     return state;
 }

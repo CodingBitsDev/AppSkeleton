@@ -7,15 +7,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 //Components
-import Popup from "../navigation/Popup.js";
-import StackNavigator from "./StackNavigator.js";
+import PopupRoot from "../screens/Popups/PopupRoot.js";
+import Loading from "../screens/Loading.js";
+import MainStackNavigator from "./MainStackNavigator.js";
+import AuthStackNavigator from "./AuthStackNavigator.js";
 
 //Actions
 import { setNavState } from "../actions/navActions.js";
+import { setNotSignedIn } from "../actions/authActions.js";
 
 const RootStack = createStackNavigator();
 
-function RootNavigator(props) {
+function RootNavigator( {user, checkingLogin, ...props} ) {
   //navRef
   navRef = useRef();
 
@@ -26,16 +29,32 @@ function RootNavigator(props) {
     }
   }, []);
 
+  //Mock LoginCheckTime
+  useEffect( () => {
+    setTimeout( () => {
+      props.dispatch(setNotSignedIn());
+    }, 500 );
+
+  })
+
   return (
     <NavigationContainer
       ref={ navRef }
       onStateChange={(state) => { onNavStateChange(state, props) }}
     >
       <RootStack.Navigator  mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
-        <RootStack.Screen name="Root" component={StackNavigator}/>
+        { checkingLogin? ( 
+          <RootStack.Screen name="Loading" component={Loading}/>
+        ) : user ? (
+          <RootStack.Screen name="Main" component={MainStackNavigator}/>
+        ) : (
+          <RootStack.Screen name="Auth" component={AuthStackNavigator}/>
+        )
+
+        }
         <RootStack.Screen 
           name="Popup"
-          component={ Popup }
+          component={ PopupRoot }
           options={{
             animationEnabled: true,
             cardStyle: { backgroundColor: 'rgba(52, 52, 52, 0.01)' },
@@ -83,6 +102,8 @@ function getActiveRouteName( state ){
 
 export default connect((store) => {
   return {
+    user: store.authReducer.user,
+    checkingLogin: store.authReducer.checkingLogin,
     currentNavAction: store.navReducer.currentNavAction,
   };
 })(RootNavigator);
