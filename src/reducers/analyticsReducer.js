@@ -21,6 +21,26 @@ export default function reducer(state=INITIAL_STATE , action) {
         navState: action.payload.navState,
       }
     }
+    case "SIGN_IN_SUCESSFULL": {
+      //FirebaseAnalytics.logEvent( "SignedIn", {})
+      return {...state, 
+      };
+    }
+    case "SIGN_IN_FAILED": {
+      //FirebaseAnalytics.logEvent( "SignedInFailed", {errorName: error.name, errorMessage: error.message})
+      return {...state, 
+      };
+    }
+    case "SIGN_UP_SUCESSFULL": {
+      //FirebaseAnalytics.logEvent( "SignedUp", {})
+      return {...state, 
+      };
+    }
+    case "SIGN_UP_FAILED": {
+      //FirebaseAnalytics.logEvent( "SignedUpFailed", {errorName: error.name, errorMessage: error.message})
+      return {...state, 
+      };
+    }
     case 'persist/REHYDRATE': {
       let payload = {};
       if (action.payload && action.payload.analyticsReducer){

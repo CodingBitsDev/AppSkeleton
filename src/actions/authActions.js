@@ -52,7 +52,7 @@ export async function signUp( userName, password ){
         password,
       },
     });
-    //TODO Replace with acuall SignInCode
+    //TODO Replace with acuall SignUpCode
     try {
       await timeout(1000);
       let user = { uid: "123456", name: "Test" };

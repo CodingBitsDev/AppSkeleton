@@ -20,7 +20,7 @@ const RootStack = createStackNavigator();
 
 function RootNavigator( {user, checkingLogin, ...props} ) {
   //navRef
-  navRef = useRef();
+  let navRef = useRef();
 
   //Set the inital navState
   useEffect ( () => {
