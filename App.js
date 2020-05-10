@@ -1,11 +1,41 @@
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+//SafeArea
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+//Navigation
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from "./src/navigation/StackNavigator.js";
+
+//Redux
+import { Provider } from 'react-redux';
+import { persistStore, autoRehydrate, persistReducer } from 'redux-persist'; 
+import { PersistGate } from 'redux-persist/integration/react'
+import persistStoreConfig from './src/configs/persistStoreConfig.js';
+import store from "./src/configs/store.js";
+
+//GlobalModal
+
 export default function App() {
+  let [ rehydrated, setRehydrated ] = useState( false );
+  const persistorRef = useRef();
+  useEffect( () => {
+    persistorRef.current = persistStore( store, null, () => {
+      setRehydrated(true);
+    });
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      {persistorRef.current != null &&
+          (<PersistGate persistor={ persistorRef.current }>
+            <SafeAreaProvider>
+              <StackNavigator />
+            </SafeAreaProvider>
+          </PersistGate>)
+      } 
+    </Provider>
   );
 }
 
