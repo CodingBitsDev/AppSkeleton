@@ -12,7 +12,7 @@ function HomeScreen2(props) {
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen 2 {"\n" + props.test}</Text>
       <Button
-        onPress={ () => { props.navigation.dispatch(openPopup(props.navigation)) } }
+        onPress={ () => { props.dispatch(openPopup(props.navigation)) } }
         title="Open Popup"
         color="#F00"
       />

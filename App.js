@@ -6,7 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //Navigation
 import { NavigationContainer } from '@react-navigation/native';
-import StackNavigator from "./src/navigation/StackNavigator.js";
+import RootNavigator from "./src/navigation/RootNavigator.js";
 
 //Redux
 import { Provider } from 'react-redux';
@@ -31,7 +31,7 @@ export default function App() {
       {persistorRef.current != null &&
           (<PersistGate persistor={ persistorRef.current }>
             <SafeAreaProvider>
-              <StackNavigator />
+              <RootNavigator />
             </SafeAreaProvider>
           </PersistGate>)
       } 

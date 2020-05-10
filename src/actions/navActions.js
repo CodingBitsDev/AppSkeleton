@@ -52,10 +52,31 @@ export function goBackAndOpen( navAction ){
   })
 }
 
+export function openPopup(navigation, content, data){
+  let { closeOnOutsidePress, closeOnBackPress } = data || {};
+  console.log(closeOnOutsidePress, closeOnBackPress)
+  return( (dispatch, getState) => {
+    dispatch({
+      type:"SET_POPUP_CONTENT",
+      payload: {
+        content: content || null,
+      },
+    })    
+    navigation.dispatch(CommonActions.navigate({
+      name: 'Popup',
+      key: 'Popup',
+      params: {
+        closeOnOutsidePress: closeOnOutsidePress != undefined ? closeOnOutsidePress :  true,
+        closeOnBackPress: closeOnBackPress != undefined ? closeOnBackPress : true,
+      }
+    }));
+  });
+}
 
-//**********************
-//*****PureActions*****
-//**********************
+
+//************************
+//*****PureNavActions*****
+//************************
 export function openHomeScreen() {
   return CommonActions.navigate({
     name: 'HomeScreen',
@@ -72,17 +93,6 @@ export function openHomeScreen2() {
     key: 'HomeScreen2',
     params: {
       //Important params that the screen needs
-    }
-  });
-}
-
-export function openPopup(navigation, content){
-  return CommonActions.navigate({
-    name: 'Popup',
-    key: 'Popup',
-    params: {
-      closeOnOutsideClick: true,
-      content,
     }
   });
 }

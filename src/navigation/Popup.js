@@ -1,22 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
-import { Dimensions, StyleSheet, View, Text,TouchableWithoutFeedback,} from 'react-native';
+import { BackHandler, Dimensions, StyleSheet, View, Text,TouchableWithoutFeedback,} from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Popup( props ){
   let navigation = props.navigation;
   let params = ( props.route && props.route.params ) || {};
-  let {closeOnOutsideClick} = params;
+  let {closeOnOutsidePress, closeOnBackPress} = params;
 
-  let content = React.cloneElement(
-    params.content || null, 
-    { navigation: props.navigation }
-  );
+  let content = null;
+  if (props.popupContent){
+    content = React.cloneElement(
+      props.popupContent, 
+      { navigation: props.navigation }
+    );
+  }
+
+  useEffect( () => {
+    let backAction = () => {
+      closeOnBackPress && navigation.goBack();
+      return true;
+    };
+    BackHandler.addEventListener('hardwareBackPress', backAction);
+    return () => { BackHandler.removeEventListener( 'hardwareBackPress', backAction ) }
+  }, [])
 
   return(
     <View style={[{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.0)', justifyContent: "center", alignItems:"center"}]}>
-      <TouchableWithoutFeedback style={{...StyleSheet.absoluteFillObject}} onPress={() => { closeOnOutsideClick && navigation.goBack() }}>
+      <TouchableWithoutFeedback style={{...StyleSheet.absoluteFillObject}} onPress={() => { closeOnOutsidePress && navigation.goBack() }}>
         <View style={[{...StyleSheet.absoluteFillObject ,backgroundColor: "rgba(0, 0, 0, 0.0)"}]} />
       </TouchableWithoutFeedback>
       <View style={[{backgroundColor: "transparent", borderRadius: 10, overFlow: "hidden"}]}>
@@ -28,6 +40,7 @@ function Popup( props ){
 
 export default connect((store) => {
   return {
+    popupContent: store.popupReducer.popupContent,
   };
 })(Popup);
 

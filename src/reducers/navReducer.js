@@ -1,3 +1,5 @@
+import { getActiveScreen } from "../helperFunctions/navHelpers.js";
+
 const INITIAL_STATE = {
   navState: [],
   currentNavAction: null,

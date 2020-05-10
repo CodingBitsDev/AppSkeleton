@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from "react-redux"; 
-
 import { View, Text, Button,} from 'react-native';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,7 +10,6 @@ import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 
 
 function HomeScreen(props) {
-  console.log(props)
   return (
     <SafeAreaView style={{backgroundColor:"blue", flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen {"\n" + props.test}</Text>
@@ -21,7 +19,7 @@ function HomeScreen(props) {
         color="#841584"
       />
       <Button
-        onPress={ () => { props.navigation.dispatch(openPopup(props.navigation, popupContent(props) )) } }
+        onPress={ () => { props.dispatch(openPopup(props.navigation, popupContent(props), {closeOnBackPress : true, closeOnOutsidePress: true} )) } }
         title="Open Popup"
         color="#F00"
       />
