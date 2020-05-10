@@ -9,7 +9,10 @@ function Popup( props ){
   let params = ( props.route && props.route.params ) || {};
   let {closeOnOutsideClick} = params;
 
-  let content = params.content || null;
+  let content = React.cloneElement(
+    params.content || null, 
+    { navigation: props.navigation }
+  );
 
   return(
     <View style={[{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.0)', justifyContent: "center", alignItems:"center"}]}>
@@ -17,7 +20,7 @@ function Popup( props ){
         <View style={[{...StyleSheet.absoluteFillObject ,backgroundColor: "rgba(0, 0, 0, 0.0)"}]} />
       </TouchableWithoutFeedback>
       <View style={[{backgroundColor: "transparent", borderRadius: 10, overFlow: "hidden"}]}>
-        {content}
+        { content } 
       </View>
     </View>
   )

@@ -31,7 +31,7 @@ function HomeScreen(props) {
 
 function popupContent(props){
   return (
-    <MessageBoxPopup navigation={ props.navigation }/>
+    <MessageBoxPopup />
   );
 }
 
