@@ -8,7 +8,6 @@ import { openHomeScreen2, openPopup } from "../actions/navActions.js";
 
 import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 
-
 function HomeScreen(props) {
   return (
     <SafeAreaView style={{backgroundColor:"blue", flex: 1, alignItems: 'center', justifyContent: 'center' }}>

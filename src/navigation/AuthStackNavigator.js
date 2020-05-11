@@ -8,7 +8,7 @@ import SignUp from "../screens/Auth/SignUp.js";
 const Stack = createStackNavigator();
 let MainStackNavigator = () => {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator keyboardHandlingEnabled={false} >
       <Stack.Screen name="SignIn" component={SignIn}
         options={{
         }}

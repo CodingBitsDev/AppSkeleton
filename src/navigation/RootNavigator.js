@@ -33,7 +33,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
   useEffect( () => {
     setTimeout( () => {
       props.dispatch(setNotSignedIn());
-    }, 500 );
+    }, 1 );
 
   })
 
@@ -42,7 +42,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
       ref={ navRef }
       onStateChange={(state) => { onNavStateChange(state, props) }}
     >
-      <RootStack.Navigator  mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
+      <RootStack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
         { checkingLogin? ( 
           <RootStack.Screen name="Loading" component={Loading}/>
         ) : user ? (

@@ -8,7 +8,7 @@ import HomeScreen2 from "../screens/HomeScreen2.js";
 const Stack = createStackNavigator();
 let MainStackNavigator = () => {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator keyboardHandlingEnabled={false} >
       <Stack.Screen 
         name="HomeScreen"
         key="HomeScreen"
