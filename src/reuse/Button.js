@@ -37,7 +37,6 @@ function CustomButtom(props){
 
   let textColor = getContrastColor(btnColor);
   textColor = props.textColor || textColor;
-  console.log(textColor)
    
   let btnStyle = {
     container: {
