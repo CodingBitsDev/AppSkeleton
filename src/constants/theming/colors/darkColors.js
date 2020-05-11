@@ -11,5 +11,5 @@ export default colors = {
   danger: "#d9534f",
   warning: "#f0ad4e",
   disabled: "#999999",
-  mainTextColor: "#ffffff"
+  mainTextColor: "#ffffff",
 }
