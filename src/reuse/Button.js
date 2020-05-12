@@ -1,43 +1,33 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {ActivityIndicator, Platform, Text, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import getTheme from "../constants/theming/theme.js";
 import { getContrastColor } from "../helperFunctions/colorHelpers.js";
 import { makeStyle } from "../helperFunctions/styleHelper.js";
 
-function Button(props){
+function Button({ style, start, end, locations, ...props }){
   let { colors, styles } = getTheme();
-
-  let {
-    //ColorProps
-    disabled, primary, secondary, success, danger, warning, info, 
-    //ShapeProps
-    rounded, outlined, transparent,
-    //StyleProps
-    fontSize,
-    //ExtraStyles
-    containerStyle, textStyle,
-  } = props;
 
   let extraStyles = {}
   let btnColor = colors.default;
-  if (disabled){
+  if (props.disabled){
     btnColor = colors.disabled;
-  } else if (primary){
+  } else if (props.primary){
     btnColor = colors.primary;
-  } else if (secondary){
+  } else if (props.secondary){
     btnColor = colors.secondary;
-  } else if (success){
+  } else if (props.success){
     btnColor = colors.success;
-  } else if (danger){
+  } else if (props.danger){
     btnColor = colors.danger;
-  } else if (warning){
+  } else if (props.warning){
     btnColor = colors.warning;
-  } else if (info){
+  } else if (props.info){
     btnColor = colors.info;
   }
-  btnColor = props.color || btnColor;
+  btnColor = props.color || (style ? makeStyle(style).backgroundColor : null) || btnColor;
 
   let textColor = getContrastColor(btnColor);
   textColor = props.textColor || textColor;
@@ -46,28 +36,32 @@ function Button(props){
     container: {
       height: 30,
       padding: 10,
-      backgroundColor: transparent || outlined ? "transparent" : btnColor,
+      backgroundColor: props.transparent || props.outlined ? "transparent" : btnColor,
       alignItems: "center",
       justifyContent: "center",
-      ...(outlined ? {...styles.border, borderColor: btnColor } : {} ),
-      ...(rounded ? styles.roundConers.round : styles.roundConers.tiny),
-      ...styles.shadow,
-      ...( makeStyle( containerStyle ) || {} ),
+      ...(props.outlined ? {...styles.border, borderColor: btnColor } : {} ),
+      ...(props.rounded ? styles.roundConers.round : styles.roundConers.tiny),
+      ...(props.noShadow ? {} : styles.shadow ),
+      ...( makeStyle( props.containerStyle ) || {} ),
     },
     text: {
-      color: transparent || outlined ? btnColor : textColor,
-      fontSize: fontSize || 16,
-      ...( makeStyle( textStyle ) || {} ),
+      color: props.transparent || props.outlined ? btnColor : textColor,
+      fontSize: props.fontSize || 16,
+      ...( makeStyle( props.textStyle ) || {} ),
     }
   };
+  let gradientColors = props.transparent || props.outlined ? "transparent" : btnColor;
+  gradientColors = props.colors || [gradientColors, gradientColors];
   return (
-    <Touchable style={btnStyle.container} {...props}>
+    <LinearGradient locations={locations} start={start} end={end} colors={gradientColors} style={btnStyle.container}>
+    <Touchable {...props}>
       <React.Fragment>
         {props.iconLeft && props.iconLeft}
         <Text style={btnStyle.text}>{ props.title }</Text>
         {props.iconRight && props.iconRight}
       </React.Fragment>
     </Touchable>
+    </LinearGradient>
   );
 }
 
@@ -94,11 +88,16 @@ Button.propTypes = {
   transparent: PropTypes.bool,
   //StyleProps
   fontSize: PropTypes.number,
+  noShadow: PropTypes.bool,
   //ExtraStyles
   containerStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   textStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   iconLeft: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   iconRight: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+  colors: PropTypes.array,
+  start: PropTypes.array,
+  end: PropTypes.array,
+  locations: PropTypes.array,
 };
 
 export default Button

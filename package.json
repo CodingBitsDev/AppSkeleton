@@ -15,6 +15,7 @@
     "color-string": "^1.5.3",
     "expo": "~37.0.3",
     "expo-firebase-analytics": "2.3.0",
+    "expo-linear-gradient": "~8.1.0",
     "firebase": "7.9.0",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
