@@ -1,6 +1,8 @@
 import darkColors from "./colors/darkColors.js";
 import lightColors from "./colors/lightColors.js";
 
+import icons from "./icons.js";
+
 export let THEMES = {
   DARK: "DARK",
   LIGHT: "LIGHT",

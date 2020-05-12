@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import {Platform, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, Text } from "react-native";
+import PropTypes from 'prop-types';
+import {ActivityIndicator, Platform, Text, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, } from "react-native";
 
 import getTheme from "../constants/theming/theme.js";
 import { getContrastColor } from "../helperFunctions/colorHelpers.js";
+import { makeStyle } from "../helperFunctions/styleHelper.js";
 
-function CustomButtom(props){
+function Button(props){
   let { colors, styles } = getTheme();
 
   let {
@@ -12,6 +14,8 @@ function CustomButtom(props){
     disabled, primary, secondary, success, danger, warning, info, 
     //ShapeProps
     rounded, outlined, transparent,
+    //StyleProps
+    fontSize,
     //ExtraStyles
     containerStyle, textStyle,
   } = props;
@@ -52,6 +56,7 @@ function CustomButtom(props){
     },
     text: {
       color: transparent || outlined ? btnColor : textColor,
+      fontSize: fontSize || 16,
       ...( makeStyle( textStyle ) || {} ),
     }
   };
@@ -66,8 +71,6 @@ function CustomButtom(props){
   );
 }
 
-export default CustomButtom
-
 function Touchable(props){
   return ( Platform.OS === "ios" ? (
     <TouchableOpacity { ...props} />
@@ -76,15 +79,26 @@ function Touchable(props){
   ));
 }
 
-function makeStyle( style ) {
-  let outStyle = {};
-  if ( Array.isArray(style)){
-    style.forEach( (element) => {
-      outStyle = {...outStyle, ...(makeStyle(element))}
-    }) 
-  }else {
-    outStyle = {...style };
-  }
-  return outStyle;
-}
+Button.propTypes = {
+  //ColorProps
+  disabled: PropTypes.bool,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  success: PropTypes.bool,
+  danger: PropTypes.bool,
+  warning: PropTypes.bool,
+  info: PropTypes.bool, 
+  //ShapeProps
+  rounded: PropTypes.bool,
+  outlined: PropTypes.bool,
+  transparent: PropTypes.bool,
+  //StyleProps
+  fontSize: PropTypes.number,
+  //ExtraStyles
+  containerStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  textStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  iconLeft: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+  iconRight: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+};
 
+export default Button

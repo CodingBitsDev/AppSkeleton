@@ -6,6 +6,6 @@ export function getIcons(colors){
 
 }
 
-export function getIcon(name,color,fontSize){
+export function getIcon({ name,color,fontSize,}){
   
 }
