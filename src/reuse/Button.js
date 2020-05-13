@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
-import {ActivityIndicator, Platform, Text, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, } from "react-native";
+import {Dimensions, ActivityIndicator, Platform, Text, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 import getTheme from "../constants/theming/theme.js";
 import { getContrastColor } from "../helperFunctions/colorHelpers.js";
-import { makeStyle } from "../helperFunctions/styleHelper.js";
+import { makeStyle, extractPaddingStyles } from "../helperFunctions/styleHelper.js";
 
 function Button({ style, start, end, locations, ...props }){
   let { colors, styles } = getTheme();
@@ -28,42 +28,52 @@ function Button({ style, start, end, locations, ...props }){
     btnColor = colors.info;
   }
   btnColor = props.color || (style ? makeStyle(style).backgroundColor : null) || btnColor;
+  btnColor = props.disabled ? props.disabledColor || colors.disabled : btnColor;
 
   let textColor = getContrastColor(btnColor);
   textColor = props.textColor || textColor;
    
+  let [ paddingStyle, containerStyle ] = extractPaddingStyles(props.containerStyle);
+  let textStyle = makeStyle(props.textStyle);
+
   let btnStyle = {
     container: {
       height: 30,
-      padding: 10,
-      backgroundColor: props.transparent || props.outlined ? "transparent" : btnColor,
+      backgroundColor: "transparent",
       alignItems: "center",
       justifyContent: "center",
-      ...(props.outlined ? {...styles.border, borderColor: btnColor } : {} ),
-      ...(props.rounded ? styles.roundConers.round : styles.roundConers.tiny),
-      ...(props.noShadow ? {} : styles.shadow ),
-      ...( makeStyle( props.containerStyle ) || {} ),
+      overflow: "hidden",
+      ...(props.outlined && !props.transparent ? {...styles.border, borderColor: btnColor } : {} ),
+      ...(props.full ? styles.roundConers.none : props.rounded ? styles.roundConers.round : styles.roundConers.tiny),
+      ...(props.full ? { borderRightWidth: 0, borderLeftWidth:0, width: "100%"} : {} ),
+      ...(props.block ? { width: "95%",} : {} ),
+      ...(props.noShadow || props.transparent || props.outlined ? {} : styles.shadow ),
+      ...( containerStyle || {} ),
     },
     text: {
       color: props.transparent || props.outlined ? btnColor : textColor,
       fontSize: props.fontSize || 16,
-      ...( makeStyle( props.textStyle ) || {} ),
+      ...( textStyle || {} ),
     }
   };
-  let gradientColors = props.transparent || props.outlined ? "transparent" : btnColor;
-  gradientColors = props.colors || [gradientColors, gradientColors];
+  console.log( btnStyle )
+
+  gradientColors = props.disabled ? ( props.disabledColors || [btnColor, btnColor] ) : ( props.colors || [btnColor, btnColor] );
+  gradientColors = props.transparent || props.outlined ? [ "transparent", "transparent" ] : gradientColors;
+
   return (
-    <LinearGradient locations={locations} start={start} end={end} colors={gradientColors} style={btnStyle.container}>
-    <Touchable {...props}>
-      <React.Fragment>
-        {props.iconLeft && props.iconLeft}
-        <Text style={btnStyle.text}>{ props.title }</Text>
-        {props.iconRight && props.iconRight}
-      </React.Fragment>
-    </Touchable>
-    </LinearGradient>
+      <Touchable style={btnStyle.container} {...props}>
+        <LinearGradient locations={locations} start={start} end={end} colors={gradientColors} style={[{padding: props.transparent ? 0 : 10}, paddingStyle]}>
+        <React.Fragment>
+          {props.iconLeft && props.iconLeft}
+          <Text style={btnStyle.text}>{ props.title }</Text>
+          {props.iconRight && props.iconRight}
+        </React.Fragment>
+        </LinearGradient>
+      </Touchable>
   );
 }
+
 
 function Touchable(props){
   return ( Platform.OS === "ios" ? (
@@ -71,6 +81,15 @@ function Touchable(props){
   ) : (
     <TouchableOpacity {...props} />
   ));
+}
+
+function removeUndefinedFromObject({...obj}){
+  Object.keys(obj).forEach(key => {
+    if (obj[key] === undefined) {
+      delete obj[key];
+    }
+  });
+  return obj;
 }
 
 Button.propTypes = {
@@ -82,7 +101,11 @@ Button.propTypes = {
   danger: PropTypes.bool,
   warning: PropTypes.bool,
   info: PropTypes.bool, 
+  color: PropTypes.string,
+  disabledColor: PropTypes.string,
   //ShapeProps
+  full: PropTypes.bool,
+  block: PropTypes.bool,
   rounded: PropTypes.bool,
   outlined: PropTypes.bool,
   transparent: PropTypes.bool,
@@ -95,6 +118,7 @@ Button.propTypes = {
   iconLeft: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   iconRight: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   colors: PropTypes.array,
+  disabledColors: PropTypes.array,
   start: PropTypes.array,
   end: PropTypes.array,
   locations: PropTypes.array,

@@ -7,9 +7,9 @@ import { getContrastColor } from "../helperFunctions/colorHelpers.js";
 import { extractTextStyles, makeStyle } from "../helperFunctions/styleHelper.js";
 
 function IconTextInput({ style, ...props }) {
-  let [ textInputStyle, setTextInputStyle ] = useState(extractTextStyles(style))
+  let [ textInputStyle, setTextInputStyle ] = useState(extractTextStyles(style)[0])
   useEffect( () => {
-    setTextInputStyle(extractTextStyles(style));
+    setTextInputStyle(extractTextStyles(style)[0]);
   }, [style] );
   return (
     <View style={[{flexDirection: "row", minWidth: 50, borderBottomWidth: 1}, style ]} { ...props } >

@@ -20,14 +20,15 @@ function SignIn( { navigation, route, ...props} ){
         title="Sign In"
         color={props.signInActive ? "grey" : "#841584" }
         disabled={props.signInActive}
-        containerStyle={[{margin: 10}]}
-
+        containerStyle={[{ margin: 10}]}
       />
       <Button
         onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
         title="Sign Up"
         color="#841584"
+        colors={ ["blue", "black", "blue"] }
         containerStyle={[{margin: 10}]}
+        transparent
       />
     </View>
   )
