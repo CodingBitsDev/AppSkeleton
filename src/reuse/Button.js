@@ -8,6 +8,10 @@ import { getContrastColor } from "../helperFunctions/colorHelpers.js";
 import { makeStyle, extractPaddingStyles } from "../helperFunctions/styleHelper.js";
 
 function Button({ style, start, end, locations, ...props }){
+  let [contentSize, setContentSize] = useState(null);
+  let [containerSize, setContainerSize] = useState(null);
+  console.log(contentSize);
+
   let { colors, styles } = getTheme();
 
   let extraStyles = {}
@@ -38,6 +42,8 @@ function Button({ style, start, end, locations, ...props }){
 
   let btnStyle = {
     container: {
+      flex: 1,
+      flexShrink: 1,
       minHeight: 30,
       backgroundColor: "transparent",
       alignItems: "center",
@@ -54,7 +60,13 @@ function Button({ style, start, end, locations, ...props }){
       color: props.transparent || props.outlined ? btnColor : textColor,
       fontSize: props.fontSize || 16,
       ...( textStyle || {} ),
-    }
+    },
+    contentStyle:{
+      padding: props.transparent ? 0 : 10,
+      alignSelf: "stretch",
+      justifyContent: "center",
+      alignItems: "center" 
+    },
   };
   console.log( btnStyle )
 
@@ -62,8 +74,17 @@ function Button({ style, start, end, locations, ...props }){
   gradientColors = props.transparent || props.outlined ? [ "transparent", "transparent" ] : gradientColors;
 
   return (
-      <Touchable style={btnStyle.container} {...props}>
-        <LinearGradient locations={locations} start={start} end={end} colors={gradientColors} style={[{padding: props.transparent ? 0 : 10}, paddingStyle]}>
+      <Touchable
+        onLayout={ event => { setContainerSize({width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height}) }}
+        style={btnStyle.container} {...props}>
+        <LinearGradient 
+          locations={locations}
+          start={start}
+          end={end}
+          colors={gradientColors}
+          style={[ btnStyle.contentStyle ,paddingStyle]}
+          onLayout={ event => { setContentSize({width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height}) }}
+        >
         <React.Fragment>
           {props.iconLeft && props.iconLeft}
           <Text style={btnStyle.text}>{ props.title }</Text>

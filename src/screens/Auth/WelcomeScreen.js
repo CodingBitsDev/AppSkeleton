@@ -8,7 +8,7 @@ import IconTextInput from "../../reuse/IconTextInput.js";
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { openSignUpScreen } from "../../actions/navActions.js";
+import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
 
 import getTheme from "../../constants/theming/theme.js";
 
@@ -22,7 +22,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
       flex: 1,
       justifyContent: "flex-start",
       alignItems: "center",
-      backgroundColor:"black",
+      backgroundColor: colors.background,
       height,
       width,
     },
@@ -39,13 +39,11 @@ function WelcomeScreen( { navigation, route, ...props} ){
       marginBottom: height* 0.10,
       marginHorizontal: 30,
     },
-    buttonStyle: {
-      marginTop: "10%",
-    },
     elementContainer: {
       position: "absolute",
-      top: height * 0.65,
-      justifyContent: "space-around",
+      top: height * 0.55,
+      justifyContent: "center", 
+      alignItems: "center", 
     }
   }
 
@@ -58,20 +56,21 @@ function WelcomeScreen( { navigation, route, ...props} ){
       <View style={[ styles.elementContainer ]}>
         <Text style={[styles.introTextStyle]}> Welcome To AppSkeleton. This Project Tries to Add all necessary Parts together that are usefull for any type of App </Text>
         <Button
-          onPress={ () => { console.log("signInPressed") } }
+          onPress={ () => { navigation.dispatch(openSignInScreen()) } }
           title="Sign In"
-          colors={ [colors.primary, "#4d0f70", colors.primary,] }
+          colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
           textStyle={[{color: "white"}]}
           primary
           rounded
         />
         <View style={[{minHeight: 20}]}/>
         <Button
-          onPress={ () => { console.log("registerPressed") } }
+          onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
           title=" Register "
           primary
           transparent
-          rounded
+          block
+
         />
       </View>
     </SafeAreaView>

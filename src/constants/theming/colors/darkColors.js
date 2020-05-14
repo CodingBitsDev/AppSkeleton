@@ -1,11 +1,13 @@
 const colors = {
-  background: "#000000",
-  surface: "#111111",
+  background: "#08050a",
+  surface: "#432b55",
+
   default: "#FFFFFF",
-  primary: "#bf74ec",
-  primaryVariant: "#EEEEEE",
-  secondary: "#ffcc00",
-  secondaryVariant: "#ffcc00",
+  primary: "#c278ed",
+  primaryVariants: [ "#1f062d", "#3d0c5a", "#5c1287", "#7b18b4", "#991fe0", "#ae4be7", "#c278ed", "#d6a5f3", "#ebd2f9"  ],
+  //secondary: "#ffcc00",
+  //secondaryVariant: "#ffcc00",
+
   info: "#62B1F6",
   success: "#5cb85c",
   danger: "#d9534f",

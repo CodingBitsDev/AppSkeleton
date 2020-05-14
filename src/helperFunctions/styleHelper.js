@@ -16,7 +16,7 @@ export function extractTextStyles( style ){
 
   let result = {}
   let rest = {}
-  for (key in myStyle) {
+  for (let key in myStyle) {
     if (myStyle.hasOwnProperty(key) && textStyleElements.includes(myStyle[key])) {
       result[key] = myStyle[key];
     }
@@ -33,7 +33,7 @@ export function extractPaddingStyles( style ){
 
   let result = {}
   let rest = {}
-  for (key in myStyle) {
+  for (let key in myStyle) {
     if (myStyle.hasOwnProperty(key) && textStyleElements.includes(myStyle[key])) {
       result[key] = myStyle[key];
     }
