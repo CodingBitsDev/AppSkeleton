@@ -10,7 +10,6 @@ import { makeStyle, extractPaddingStyles } from "../helperFunctions/styleHelper.
 function Button({ style, start, end, locations, ...props }){
   let [contentSize, setContentSize] = useState(null);
   let [containerSize, setContainerSize] = useState(null);
-  console.log(contentSize);
 
   let { colors, styles } = getTheme();
 
@@ -68,7 +67,6 @@ function Button({ style, start, end, locations, ...props }){
       alignItems: "center" 
     },
   };
-  console.log( btnStyle )
 
   let gradientColors = props.disabled ? ( props.disabledColors || [btnColor, btnColor] ) : ( props.colors || [btnColor, btnColor] );
   gradientColors = props.transparent || props.outlined ? [ "transparent", "transparent" ] : gradientColors;

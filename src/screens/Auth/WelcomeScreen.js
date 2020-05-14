@@ -12,9 +12,11 @@ import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js"
 
 import getTheme from "../../constants/theming/theme.js";
 
+import { responsiveScreenHeight, responsiveScreenWidth, responsiveScreenFontSize } from "react-native-responsive-dimensions";
 
 function WelcomeScreen( { navigation, route, ...props} ){
-  let {width, height} = Dimensions.get("window");
+  let width = responsiveScreenWidth(100)
+  let height = responsiveScreenHeight(100)
   let { colors, styles: defaultStyles, icons } = getTheme();
 
   let styles = {
@@ -44,11 +46,24 @@ function WelcomeScreen( { navigation, route, ...props} ){
       top: height * 0.55,
       justifyContent: "center", 
       alignItems: "center", 
+    },
+    imageBG: {
+      width: width,
+      height: height,
+      resizeMode: "cover",
+      opacity: 0.5,
+      position: "absolute",
+      top: 0,
+      right: 0,
     }
   }
 
   return(
     <SafeAreaView style={[ styles.containerStyle ]} >
+      <Image
+        style={[ styles.imageBG ]}
+        source={require('../../../assets/testBGImage.jpg')}
+      />
       <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
       <Image
         style={[ styles.imageStyle ]}
