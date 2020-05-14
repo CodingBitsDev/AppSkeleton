@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
-import { Image, TextInput, Platform, KeyboardAvoidingView, Dimensions, StyleSheet, View, Text, } from 'react-native';
+import { StatusBar, Image, TextInput, Platform, KeyboardAvoidingView, Dimensions, StyleSheet, View, Text, } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 import Button from "../../reuse/Button.js";
@@ -49,6 +49,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
 
   return(
     <SafeAreaView style={[ styles.containerStyle ]} >
+      <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
       <Image
         style={[ styles.imageStyle ]}
         source={require('../../../assets/Logo/cover-white.png')}
