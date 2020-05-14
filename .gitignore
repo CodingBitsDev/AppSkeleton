@@ -22,3 +22,6 @@ web-report/
 
 #yarn
 yarn.lock
+
+#firebase
+./firebase/*
