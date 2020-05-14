@@ -12,11 +12,16 @@ import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js"
 
 import getTheme from "../../constants/theming/theme.js";
 
-import { responsiveScreenHeight, responsiveScreenWidth, responsiveScreenFontSize } from "react-native-responsive-dimensions";
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
+
+import ReactResizeDetector from 'react-resize-detector';
 
 function WelcomeScreen( { navigation, route, ...props} ){
-  let width = responsiveScreenWidth(100)
-  let height = responsiveScreenHeight(100)
+  let [dimensions, setDimension] = useState( null );
+  let {width, height} = dimensions || {width: Dimensions.get("screen").width, height: Dimensions.get("screen").height };
+  useEffect ( () => {
+    Platform.OS == "web" && window.addEventListener('resize', (data) => setDimension({width:  document.body.clientWidth, height: document.body.clientHeight })); 
+  }, [] )
   let { colors, styles: defaultStyles, icons } = getTheme();
 
   let styles = {
@@ -25,10 +30,9 @@ function WelcomeScreen( { navigation, route, ...props} ){
       justifyContent: "flex-start",
       alignItems: "center",
       backgroundColor: colors.background,
-      height,
-      width,
     },
     imageStyle: {
+      minWidth: 300,
       width: width - 100,
       height: Platform.OS == "web" ? 400 : 200,
       resizeMode: "contain",
@@ -52,9 +56,9 @@ function WelcomeScreen( { navigation, route, ...props} ){
       height: height,
       resizeMode: "cover",
       opacity: 0.5,
-      position: "absolute",
-      top: 0,
-      right: 0,
+      //position: "absolute",
+      //top: 0,
+      //right: 0,
     }
   }
 
@@ -86,7 +90,6 @@ function WelcomeScreen( { navigation, route, ...props} ){
           primary
           transparent
           block
-
         />
       </View>
     </SafeAreaView>
