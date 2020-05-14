@@ -38,7 +38,7 @@ function Button({ style, start, end, locations, ...props }){
 
   let btnStyle = {
     container: {
-      height: 30,
+      minHeight: 30,
       backgroundColor: "transparent",
       alignItems: "center",
       justifyContent: "center",
@@ -58,7 +58,7 @@ function Button({ style, start, end, locations, ...props }){
   };
   console.log( btnStyle )
 
-  gradientColors = props.disabled ? ( props.disabledColors || [btnColor, btnColor] ) : ( props.colors || [btnColor, btnColor] );
+  let gradientColors = props.disabled ? ( props.disabledColors || [btnColor, btnColor] ) : ( props.colors || [btnColor, btnColor] );
   gradientColors = props.transparent || props.outlined ? [ "transparent", "transparent" ] : gradientColors;
 
   return (

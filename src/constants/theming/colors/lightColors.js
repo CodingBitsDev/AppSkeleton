@@ -1,5 +1,5 @@
 //TODO No light colors set
-export default colors = {
+const colors = {
   background: "#000000",
   surface: "#111111",
   default: "#FFFFFF",
@@ -13,3 +13,5 @@ export default colors = {
   warning: "#f0ad4e",
   disabled: "#f0ad4e",
 }
+
+export default colors;

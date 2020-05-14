@@ -14,8 +14,8 @@ export function extractTextStyles( style ){
   let myStyle = makeStyle(style);
   let textStyleElements = [ "textShadowColor", "color", "fontSize", "fontStyle", "fontWeight", "lineHeight", "textAlign", "textDecorationLine", "fontFamily", "textShadowOffset", "textShadowRadius", "textAlignVertical", "letterSpacing", "textDecorationColor", "textDecorationStyle", "writingDirection", ];
 
-  result = {}
-  rest = {}
+  let result = {}
+  let rest = {}
   for (key in myStyle) {
     if (myStyle.hasOwnProperty(key) && textStyleElements.includes(myStyle[key])) {
       result[key] = myStyle[key];
@@ -31,8 +31,8 @@ export function extractPaddingStyles( style ){
   let myStyle = makeStyle(style);
   let textStyleElements = [ "padding", "paddingVertical", "paddingHorizontal", "paddingTop", "paddingBottom", "paddingRight", "paddingLeft", ];
 
-  result = {}
-  rest = {}
+  let result = {}
+  let rest = {}
   for (key in myStyle) {
     if (myStyle.hasOwnProperty(key) && textStyleElements.includes(myStyle[key])) {
       result[key] = myStyle[key];

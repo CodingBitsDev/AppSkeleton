@@ -25,7 +25,6 @@ function SignIn( { navigation, route, ...props} ){
       <Button
         onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
         title="Sign Up"
-        color="#841584"
         colors={ ["blue", "black", "blue"] }
         containerStyle={[{margin: 10}]}
         transparent
