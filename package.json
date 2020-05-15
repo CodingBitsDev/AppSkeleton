@@ -1,4 +1,5 @@
 {
+  "name": "app",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -17,7 +18,9 @@
     "expo": "~37.0.3",
     "expo-firebase-analytics": "2.3.0",
     "expo-linear-gradient": "~8.1.0",
+    "expo-localization": "~8.1.0",
     "firebase": "7.9.0",
+    "i18n-js": "^3.5.1",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

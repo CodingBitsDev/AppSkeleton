@@ -23,6 +23,9 @@ import ReactResizeDetector from 'react-resize-detector';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
+//setUpTheming
+import { setTheme, THEMES } from "./src/constants/theming/theme.js";
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     'Inter-ExtraBold': require( "./assets/fonts/Inter-ExtraBold.ttf"),
@@ -34,6 +37,10 @@ export default function App() {
     "Inter-Medium": require( "./assets/fonts/Inter-Medium.ttf" ),
     "Inter-SemiBold": require( "./assets/fonts/Inter-SemiBold.ttf" ),
     "Inter-Thin": require( "./assets/fonts/Inter-Thin.ttf" ),
+  });
+
+  setTheme( THEMES.DARK, {
+    standard: "Inter-Regular",
   });
 
   let [rerender, setRerender ] = useState( Math.random() )

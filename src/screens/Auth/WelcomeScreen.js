@@ -14,12 +14,14 @@ import getTheme from "../../constants/theming/theme.js";
 
 import useWindowSize from "../../hooks/useWindowSize.js";
 
+import translate from '../../constants/language/languages.js';
+
 function WelcomeScreen( { navigation, route, ...props} ){
   let dimensions = useWindowSize(); //Only works in browser
   let {width, height} = dimensions || {width: Dimensions.get("screen").width, height: Dimensions.get("screen").height };
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
-  let { colors, styles: defaultStyles, icons } = getTheme();
+  let { colors, styles: defaultStyles, icons, fonts } = getTheme();
 
   let styles = {
     containerStyle: { 
@@ -45,18 +47,22 @@ function WelcomeScreen( { navigation, route, ...props} ){
     },
     elementContainer: {
       position: "absolute",
-      top: height * 0.55,
+      top: height * 0.50,
+      marginTop: width > 400 ? height * 0.15: 0,
+      marginHorizontal: 20,
       height: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
-      justifyContent: "center", 
+      justifyContent: "flex-start", 
       alignItems: "center", 
     },
     introTextStyle: {
       color: "white",
-      marginBottom: height* 0.10,
-      marginHorizontal: 30,
-      fontFamily: 'Inter-Medium',
+      //marginTop: height* 0.10,
+      marginBottom: height * 0.10,
+      fontFamily: fonts.standard,
+      fontSize: 16,
     },
   }
+  console.log(width > 400 ? width > height ? height * 0.15: height * 0.15 - (height - 400  - width) : 0,)
 
   return(
     <SafeAreaView style={[ styles.containerStyle ]} >
@@ -70,10 +76,10 @@ function WelcomeScreen( { navigation, route, ...props} ){
         source={require('../../../assets/Logo/cover-white.png')}
       />
       <View style={[ styles.elementContainer ]}>
-        <Text style={[styles.introTextStyle]}> Welcome To AppSkeleton. This Project Tries to Add all necessary Parts together that are usefull for any type of App </Text>
+        <Text style={[styles.introTextStyle]}> {translate("WelcomeScreen_WelcomeText")} </Text>
         <Button
           onPress={ () => { navigation.dispatch(openSignInScreen()) } }
-          title="Sign In"
+          title={translate( "WelcomeScreen_Sign_In" )}
           colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
           textStyle={[{color: "white"}]}
           primary
@@ -82,7 +88,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
         <View style={[{minHeight: 20}]}/>
         <Button
           onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
-          title=" Register "
+          title={translate( "WelcomeScreen_Sign_Up" )}
           primary
           transparent
           block

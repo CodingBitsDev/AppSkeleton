@@ -1,7 +1,8 @@
 import darkColors from "./colors/darkColors.js";
 import lightColors from "./colors/lightColors.js";
 
-import icons from "./icons.js";
+import { getIcons } from "./icons.js";
+import { getFonts } from "./fonts.js";
 
 export let THEMES = {
   DARK: "DARK",
@@ -17,12 +18,14 @@ export function setTheme( color ){
 export default function getTheme(){
   let colors = getColors(theme);
   let styles = getStyle(colors);
+  let icons = getIcons(colors)
+  let fonts = getFonts()
 
-  return { colors, styles };
+  return { colors, styles, fonts, icons };
 }
 
-function getColors( theme ){
-  switch (theme) {
+function getColors( themeName, fonts ){
+  switch (themeName) {
     case THEMES.DARK:
       return darkColors;
     case THEMES.LIGHT:
