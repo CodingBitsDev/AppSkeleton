@@ -19,7 +19,23 @@ import store from "./src/configs/store.js";
 //GlobalModal
 import ReactResizeDetector from 'react-resize-detector';
 
+//Fonts
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
+
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    'Inter-ExtraBold': require( "./assets/fonts/Inter-ExtraBold.ttf"),
+    'Inter-Regular': require( "./assets/fonts/Inter-Regular.ttf"),
+    'Inter-Black': require("./assets/fonts/Inter-Black.ttf"),
+    "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
+    "Inter-ExtraLight": require("./assets/fonts/Inter-ExtraLight.ttf"),
+    "Inter-Light": require( "./assets/fonts/Inter-Light.ttf" ),
+    "Inter-Medium": require( "./assets/fonts/Inter-Medium.ttf" ),
+    "Inter-SemiBold": require( "./assets/fonts/Inter-SemiBold.ttf" ),
+    "Inter-Thin": require( "./assets/fonts/Inter-Thin.ttf" ),
+  });
+
   let [rerender, setRerender ] = useState( Math.random() )
   useEffect( () => {
     if ( Platform.OS == "web" ){
@@ -36,7 +52,7 @@ export default function App() {
     });
   }, []);
 
-  return (
+  return fontsLoaded  ? (
     <ResizeComponent>
       <Provider store={store}>
         {persistorRef.current != null &&
@@ -48,7 +64,7 @@ export default function App() {
         } 
       </Provider>
     </ResizeComponent>
-  );
+  ) : (<AppLoading />);
 }
 
 function ResizeComponent({ children }){

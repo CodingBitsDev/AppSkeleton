@@ -12,16 +12,13 @@ import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js"
 
 import getTheme from "../../constants/theming/theme.js";
 
-import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
-
-import ReactResizeDetector from 'react-resize-detector';
+import useWindowSize from "../../hooks/useWindowSize.js";
 
 function WelcomeScreen( { navigation, route, ...props} ){
-  let [dimensions, setDimension] = useState( null );
+  let dimensions = useWindowSize(); //Only works in browser
   let {width, height} = dimensions || {width: Dimensions.get("screen").width, height: Dimensions.get("screen").height };
-  useEffect ( () => {
-    Platform.OS == "web" && window.addEventListener('resize', (data) => setDimension({width:  document.body.clientWidth, height: document.body.clientHeight })); 
-  }, [] )
+  let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
+
   let { colors, styles: defaultStyles, icons } = getTheme();
 
   let styles = {
@@ -31,35 +28,34 @@ function WelcomeScreen( { navigation, route, ...props} ){
       alignItems: "center",
       backgroundColor: colors.background,
     },
-    imageStyle: {
-      minWidth: 300,
-      width: width - 100,
-      height: Platform.OS == "web" ? 400 : 200,
-      resizeMode: "contain",
-      marginTop: "10%",
-      position: "absolute",
-      top: height * 0.1 - (Platform.OS == "web" ? 200 : 0 ),
-    },
-    introTextStyle: {
-      color: "white",
-      marginBottom: height* 0.10,
-      marginHorizontal: 30,
-    },
-    elementContainer: {
-      position: "absolute",
-      top: height * 0.55,
-      justifyContent: "center", 
-      alignItems: "center", 
-    },
     imageBG: {
       width: width,
       height: height,
       resizeMode: "cover",
       opacity: 0.5,
-      //position: "absolute",
-      //top: 0,
-      //right: 0,
-    }
+    },
+    imageStyle: {
+      maxHeight: height * 0.5,
+      minWidth: 300,
+      width: width - 100,
+      height: width - 100,
+      resizeMode: "contain",
+      position: "absolute",
+      top: height * 0.1,
+    },
+    elementContainer: {
+      position: "absolute",
+      top: height * 0.55,
+      height: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
+      justifyContent: "center", 
+      alignItems: "center", 
+    },
+    introTextStyle: {
+      color: "white",
+      marginBottom: height* 0.10,
+      marginHorizontal: 30,
+      fontFamily: 'Inter-Medium',
+    },
   }
 
   return(

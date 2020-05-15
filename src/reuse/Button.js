@@ -41,8 +41,6 @@ function Button({ style, start, end, locations, ...props }){
 
   let btnStyle = {
     container: {
-      flex: 1,
-      flexShrink: 1,
       minHeight: 30,
       backgroundColor: "transparent",
       alignItems: "center",
