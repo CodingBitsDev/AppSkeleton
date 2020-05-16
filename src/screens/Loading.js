@@ -5,6 +5,7 @@ import { Dimensions, StyleSheet, View, Text, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Loading( { navigation, route, ...props} ){
+
   return(
     <SafeAreaView style={[{ flex: 1, justifyContent: "center", alignItems:"center"}]}>
       <Text>Loading</Text>
@@ -14,6 +15,7 @@ function Loading( { navigation, route, ...props} ){
 
 export default connect((store) => {
   return {
+    checkingLogin: store.authReducer.checkingLogin,
   };
 })(Loading);
 

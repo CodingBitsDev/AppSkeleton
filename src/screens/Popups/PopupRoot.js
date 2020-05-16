@@ -4,6 +4,8 @@ import { BackHandler, Dimensions, StyleSheet, View, Text,TouchableWithoutFeedbac
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CommonActions } from '@react-navigation/native';
+
 function Popup( { navigation, route, ...props } ){
   let params = route && route.params || {};
   let {closeOnOutsidePress, closeOnBackPress} = params;
@@ -17,7 +19,7 @@ function Popup( { navigation, route, ...props } ){
   }
   else {
     console.warn("PopupContent not Set")
-    navigation.pop()
+    goBack(navigation)
   }
 
   useEffect( () => {
@@ -34,11 +36,20 @@ function Popup( { navigation, route, ...props } ){
       <TouchableWithoutFeedback style={{...StyleSheet.absoluteFillObject}} onPress={() => { closeOnOutsidePress && navigation.goBack() }}>
         <View style={[{...StyleSheet.absoluteFillObject ,backgroundColor: "rgba(0, 0, 0, 0.0)"}]} />
       </TouchableWithoutFeedback>
-      <View style={[{backgroundColor: "transparent", borderRadius: 10, overFlow: "hidden"}]}>
+      <View style={[{backgroundColor: "transparent", borderRadius: 10, overflow: "hidden"}]}>
         { content } 
       </View>
     </View>
   )
+}
+
+function goBack( navigation ){
+  if (navigation.canGoBack()){
+    navigation.pop();
+  }
+  else {
+    navigation.replace(navigation.dangerouslyGetState().routeNames[0]);
+  }
 }
 
 export default connect((store) => {

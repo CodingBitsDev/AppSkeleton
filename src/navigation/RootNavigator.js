@@ -1,5 +1,6 @@
 //React Specific
 import React, { useEffect, useRef } from 'react';
+import { Platform } from 'react-native';
 import {connect} from "react-redux"
 
 //NavSpecific
@@ -16,7 +17,7 @@ import AuthStackNavigator from "./AuthStackNavigator.js";
 import { setNavState } from "../actions/navActions.js";
 import { setNotSignedIn } from "../actions/authActions.js";
 
-const RootStack = createStackNavigator();
+const Stack = createStackNavigator();
 
 function RootNavigator( {user, checkingLogin, ...props} ) {
   //navRef
@@ -34,25 +35,49 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
     setTimeout( () => {
       props.dispatch(setNotSignedIn());
     }, 1 );
+  }, [])
 
-  })
+  //Linking
+  const linking = {
+    prefixes: Platform.OS == "web" ? [window.location.host, 'app-skeleton://'] : ['app-skeleton://'] ,
+    config: {
+      popup: "/home/popup",
+      Auth: {
+        screens: {
+          path: "",
+          WelcomeScreen: "welcome",
+          SignIn: "sign-in",
+          SignUp: "register",
+        }
+      },
+      Main: {
+        screens: {
+          path: "",
+          HomeScreen: "home",
+          HomeScreen2: "home2",
+        }
+      }
+    },
+  };
+
+  //This cannot be a screen because it is always checked and would by that destroy the linking
+  if (checkingLogin){
+    return (<Loading />);
+  }
 
   return (
     <NavigationContainer
       ref={ navRef }
       onStateChange={(state) => { onNavStateChange(state, props) }}
+      linking={linking}
     >
-      <RootStack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
-        { checkingLogin? ( 
-          <RootStack.Screen name="Loading" component={Loading}/>
-        ) : user ? (
-          <RootStack.Screen name="Main" component={MainStackNavigator}/>
+      <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
+        {user ? (
+          <Stack.Screen name="Main" component={MainStackNavigator}/>
         ) : (
-          <RootStack.Screen name="Auth" component={AuthStackNavigator}/>
-        )
-
-        }
-        <RootStack.Screen 
+          <Stack.Screen name="Auth" component={AuthStackNavigator}/>
+        )}
+        <Stack.Screen 
           name="Popup"
           component={ PopupRoot }
           options={{
@@ -79,7 +104,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
             },
           }}
         />
-      </RootStack.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   ) 
 }
