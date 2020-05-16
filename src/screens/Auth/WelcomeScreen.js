@@ -82,7 +82,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
           <Text style={[styles.introTextStyle]}> {translate("WelcomeScreen_WelcomeText")} </Text>
           <Button
             onPress={ () => { navigation.dispatch(openSignInScreen()) } }
-            title={translate( "WelcomeScreen_Sign_In" )}
+            title={translate( "WelcomeScreen_SignIn" )}
             colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
             textStyle={[{color: "white"}]}
             primary
@@ -91,7 +91,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
           />
           <Button
             onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
-            title={translate( "WelcomeScreen_Sign_Up" )}
+            title={translate( "WelcomeScreen_SignUp" )}
             primary
             transparent
             containerStyle={{ marginBottom: 20 }}

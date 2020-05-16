@@ -43,14 +43,13 @@ function SignIn( { navigation, route, ...props} ){
       resizeMode: "contain",
     },
     textInputStyle: {
-      backgroundColor: "rgba( 255, 255, 255, 1.0 )",
+      backgroundColor: colors.mainTextInputColor,
       marginTop: 20,
       minWidth: width * 0.7 < 400 ? width * 0.7 : 400,
       height: 50, 
       ...defaultStyles.roundConers.rounded, 
     },
     textInputContainer: {
-      marginBottom: Platform.OS == "web" ? 175 :  containerHeight * 0.1,
       alignItems: "center",
       width: width,
       flex: 0,
@@ -76,8 +75,15 @@ function SignIn( { navigation, route, ...props} ){
           onChangeText={ setUserName }
           value={userName}
           style={{ ...styles.textInputStyle, }} 
-          icon={(<Icon name='user-circle-o' type="font-awesome" />)}
-          placeholder="UserName"
+          icon={(
+            <Icon
+              name='user-circle-o'
+              type="font-awesome"
+              color={userName != "" ? getIconColor(userNameOK(userName), colors) : "black" } 
+            />
+          )}
+          placeholder={translate("SignIn_Username")}
+          placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
         <IconTextInput
           onChangeText={ setPassword }
@@ -86,27 +92,58 @@ function SignIn( { navigation, route, ...props} ){
           style={{ ...styles.textInputStyle, }} 
           icon={(
             <View 
-              style={[
-                { borderWidth: 1.5, borderColor: "black", height: 25, width: 25, alignItems: "center", justifyContent: "center" },
-                defaultStyles.roundConers.rounded
-              ]}>
-              <Icon solid="false" name='lock' type="font-awesome" />
+              style={[{ borderColor: password != "" ? getIconColor(passwordOK(password), colors) : "black", 
+                  borderWidth: 1.5,
+                  height: 25, width: 25, alignItems: "center", justifyContent: "center" 
+              }, defaultStyles.roundConers.rounded ]}>
+              <Icon 
+                solid="false" name='lock'
+                type="font-awesome" 
+                color={password != "" ? getIconColor(passwordOK(password), colors) : "black" } 
+              />
             </View>
           )}
-          placeholder="Password"
+          placeholder={translate("SignIn_Password")}
+          placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
       </View>
+      <View style={[{flexGrow: 1, maxHeight: Platform.OS == "web" ? 150 : height * 0.05}]} />
       <Button
         onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
-        title={translate( "WelcomeScreen_Sign_In" )}
+        title={translate( "SignIn_SignIn" )}
         colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
         textStyle={[{color: "white"}]}
         primary
         rounded
+        disabled={props.signInActive || !userNameOK(userName) || !passwordOK(password)}
         containerStyle={{ margin: 20 }}
       />
     </SafeAreaView>
   )
+}
+
+function userNameOK( userName ){
+  if (userName.includes(".")){
+    return -1;
+  }
+  if (userName.length >= 3){
+    return 1;
+  }
+  return 0;
+}
+
+function passwordOK( password ){
+  if ( false ){
+    return -1;
+  }
+  if (password.length >= 6){
+    return 1;
+  }
+  return 0;
+}
+
+function getIconColor( warningState, colors ){
+  return warningState > -1 ? warningState > 0 ? colors.success : colors.warning : colors.danger; 
 }
 
 export default connect((store) => {

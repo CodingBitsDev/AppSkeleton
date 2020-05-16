@@ -14,6 +14,8 @@ const colors = {
   warning: "#f0ad4e",
   disabled: "#999999",
   mainTextColor: "#ffffff",
+  mainTextInputColor: "#FFFFFF",
+  mainTextInputPlaceholderColor: "#AAAAAA",
 }
 
 export default colors;
