@@ -1,6 +1,6 @@
 const colors = {
-  background: "#08050a",
-  surface: "#432b55",
+  background: "#130c18",
+  surface: "#1b1122",
 
   default: "#FFFFFF",
   primary: "#c278ed",

@@ -13,6 +13,7 @@
     "@react-navigation/native": "^5.2.6",
     "@react-navigation/stack": "^5.3.1",
     "@use-expo/font": "^2.0.0",
+    "add": "^2.0.6",
     "color": "^3.1.2",
     "color-string": "^1.5.3",
     "expo": "~37.0.3",
@@ -29,6 +30,7 @@
     "react-native-elements": "^2.0.0",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-paper": "^3.10.1",
     "react-native-reanimated": "~1.7.0",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-safe-area-context": "0.7.3",
@@ -41,7 +43,8 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

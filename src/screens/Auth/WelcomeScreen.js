@@ -1,19 +1,23 @@
+//Libraries
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
-import { ScrollView, StatusBar, Image, TextInput, Platform, KeyboardAvoidingView, Dimensions, StyleSheet, View, Text, } from 'react-native';
+
+
+//Components
+import { ScrollView, StatusBar, Image, Platform, Dimensions, View, Text, } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
 
 import Button from "../../reuse/Button.js";
-import IconTextInput from "../../reuse/IconTextInput.js";
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-
+//Actions
 import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
 
-import getTheme from "../../constants/theming/theme.js";
-
+//CusomHooks
 import useWindowSize from "../../hooks/useWindowSize.js";
 
+//HelperFunctions
+import getTheme from "../../constants/theming/theme.js";
 import translate from '../../constants/language/languages.js';
 
 function WelcomeScreen( { navigation, route, ...props} ){
@@ -24,10 +28,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
 
   let styles = {
     containerStyle: { 
-      flex: 1,
-      justifyContent: "flex-start",
-      alignItems: "center",
-      backgroundColor: colors.background,
+      ...defaultStyles.container,
     },
     scrollViewStyle: { 
       flex: 1,
@@ -37,7 +38,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
       width: width,
       height: height,
       resizeMode: "cover",
-      opacity: 0.5,
+      opacity: 0.7,
       position: "absolute"
     },
     imageStyle: {
@@ -50,13 +51,14 @@ function WelcomeScreen( { navigation, route, ...props} ){
     },
     elementContainer: {
       marginTop: width > 400 ? height * 0.15: 0,
-      marginHorizontal: Platform.OS == "web" ? 15 : 20,
-      minheight: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
+      marginHorizontal: 15,
+      minHeight: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
       justifyContent: "flex-start", 
       alignItems: "center", 
       flex: 1,
     },
     introTextStyle: {
+      textAlign: "center",
       color: "white",
       marginBottom: height * 0.10,
       fontFamily: fonts.standard,
@@ -85,8 +87,8 @@ function WelcomeScreen( { navigation, route, ...props} ){
             textStyle={[{color: "white"}]}
             primary
             rounded
+            containerStyle={{ marginBottom: 20 }}
           />
-          <View style={[{minHeight: 20}]}/>
           <Button
             onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
             title={translate( "WelcomeScreen_Sign_Up" )}

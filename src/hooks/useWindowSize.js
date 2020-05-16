@@ -12,7 +12,6 @@ export default function useWindowSize(friendID) {
   }
   else {
     let screenDimensions = Dimensions.get("screen") || {};
-    console.log("ScreenDimensions", screenDimensions);
     useEffect ( () => {
       setDimension({width: screenDimensions.width, height: screenDimensions.height });
     }, [screenDimensions.width, screenDimensions.height] )
