@@ -22,13 +22,14 @@ const Stack = createStackNavigator();
 function RootNavigator( {user, checkingLogin, ...props} ) {
   //navRef
   let navRef = useRef();
+  let initalStateDispatched = useRef(false);
 
   //Set the inital navState
   useEffect ( () => {
-    if (navRef.current){
+    if (!initalStateDispatched.current && navRef.current){
       props.dispatch(setNavState(navRef.current.getRootState()));
     }
-  }, []);
+  });
 
   //Mock LoginCheckTime
   useEffect( () => {
@@ -61,10 +62,10 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
   };
 
   //This cannot be a screen because it is always checked and would by that destroy the linking
-  if (checkingLogin){
+  if ( checkingLogin ){
     return (<Loading />);
   }
-
+  
   return (
     <NavigationContainer
       ref={ navRef }
@@ -72,7 +73,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
       linking={linking}
     >
       <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
-        {user ? (
+        { user ? (
           <Stack.Screen name="Main" component={MainStackNavigator}/>
         ) : (
           <Stack.Screen name="Auth" component={AuthStackNavigator}/>
