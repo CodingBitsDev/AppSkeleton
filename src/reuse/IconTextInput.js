@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import PropTypes from 'prop-types';
 import {ActivityIndicator, Platform, TextInput, View, Dimensions, } from "react-native";
 
-import getTheme from "../constants/theming/theme.js";
+import getTheme from "theme/index.js";
 import { getContrastColor } from "../helperFunctions/colorHelpers.js";
 import { extractTextStyles, makeStyle } from "../helperFunctions/styleHelper.js";
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Dimensions, ActivityIndicator, Platform, Text, TouchableOpacity, TouchableNativeFeedback, TouchableHighlight, View, } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
-import getTheme from "../constants/theming/theme.js";
+import getTheme from "theme/index.js";
 import { getContrastColor } from "../helperFunctions/colorHelpers.js";
 import { makeStyle, extractPaddingStyles } from "../helperFunctions/styleHelper.js";
 

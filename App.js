@@ -24,7 +24,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 //setUpTheming
-import { setTheme, THEMES } from "./src/constants/theming/theme.js";
+import { setTheme, THEMES } from "theme/index.js";
 
 export default function App() {
   let [fontsLoaded] = useFonts({

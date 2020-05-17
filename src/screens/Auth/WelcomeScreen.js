@@ -17,7 +17,7 @@ import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js"
 import useWindowSize from "../../hooks/useWindowSize.js";
 
 //HelperFunctions
-import getTheme from "theme/theme.js";
+import getTheme from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
 function WelcomeScreen( { navigation, route, ...props} ){

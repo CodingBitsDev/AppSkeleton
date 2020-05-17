@@ -19,7 +19,7 @@ import { signIn } from "../../actions/authActions.js";
 import useWindowSize from "../../hooks/useWindowSize.js";
 
 //HelperFunctions
-import getTheme from "../../constants/theming/theme.js";
+import getTheme from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
 function SignIn( { navigation, route, ...props} ){
