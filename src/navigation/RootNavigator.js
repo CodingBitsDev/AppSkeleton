@@ -65,12 +65,12 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
   if ( checkingLogin ){
     return (<Loading />);
   }
-  
+
   return (
     <NavigationContainer
       ref={ navRef }
       onStateChange={(state) => { onNavStateChange(state, props) }}
-      linking={linking}
+      {...( Platform.OS == "web" ? {linking:linking} : {} ) }
     >
       <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
         { user ? (
