@@ -3,6 +3,7 @@ This Project tries to all features and parts that are necessary for Any kind of 
 It tries to not only support both Android and Ios but also the Web in one single codebase.
 
 ## Supported Features
+- Absolute paths in web and app
 - React Navigation as base for routing and app navigation.
 - Support for url routing
 - Redux to ensure easy communication between many screans.
