@@ -10,6 +10,7 @@ import { makeStyle, extractPaddingStyles } from "../helperFunctions/styleHelper.
 function Button({ style, start, end, locations, ...props }){
   let [contentSize, setContentSize] = useState(null);
   let [containerSize, setContainerSize] = useState(null);
+  let [hover, setHover] = useState(false);
 
   let { colors, styles } = getTheme();
 
@@ -52,6 +53,7 @@ function Button({ style, start, end, locations, ...props }){
       ...(props.block ? { width: "95%",} : {} ),
       ...(props.noShadow || props.transparent || props.outlined ? {} : styles.shadow ),
       ...( containerStyle || {} ),
+      ...(hover & !props.nohover && !props.disabled ? { transform: [ { scaleX: 1.1 }, { scaleY: 1.1 } ] } : {}),
     },
     text: {
       color: props.transparent || props.outlined ? btnColor : textColor,
@@ -74,6 +76,8 @@ function Button({ style, start, end, locations, ...props }){
         onLayout={ event => { setContainerSize({width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height}) }}
         style={btnStyle.container} {...props}>
         <LinearGradient 
+          onMouseEnter={() => setHover( true )}
+          onMouseLeave={() => setHover( false )}
           locations={locations}
           start={start}
           end={end}
