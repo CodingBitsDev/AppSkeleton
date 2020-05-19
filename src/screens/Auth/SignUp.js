@@ -8,8 +8,9 @@ import { ScrollView, StatusBar, Image,  Platform, KeyboardAvoidingView, Dimensio
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
 
-import Button from "../../reuse/Button.js";
-import IconTextInput from "../../reuse/IconTextInput.js";
+
+import Button from "reuse/Button.js";
+import IconTextInput from "reuse/IconTextInput.js";
 
 //Actions
 import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
@@ -26,17 +27,59 @@ function SignUp( { navigation, route, ...props} ){
   let [ userName, setUserName ] = useState("");
   let [ password, setPassword ] = useState("");
   let [ repeatPassword, setRepeatPassword ] = useState("");
+  let [ localWaring, setLocalWarning ] = useState("");
+  let [ localError, setLocalError ] = useState("");
+
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
   let { colors, styles: defaultStyles, icons, fonts } = getTheme();
 
+  function checkNameForWarning( userName ){
+    if (userName.includes(".")){
+      setLocalError( "The following sign is not allowed in the username: \".\"");
+      return;
+    }
+    if (userName.length >= 3){
+      setLocalWarning("")
+      setLocalError("")
+      return;
+    }
+    setLocalWarning("Username should have at least length of 3");
+  }
+
+  function checkPasswordForWarining( password ){
+    if ( false ){
+      setLocalError( "Some Password Error");
+      return;
+    }
+    if (password.length >= 6){
+      setLocalWarning( "");
+      setLocalError( "");
+      return;
+    }
+    setLocalWarning( "The Password must be at least 6 signs long");
+    return;
+  }
+
+  function checkRepeatPassowrdForWarning( password, repeatPassword ){
+    if (repeatPassword.length < 6){
+      return;
+    }
+    if (password == repeatPassword){
+      setLocalError( "");
+      return;
+    }
+    setLocalError( "Passwords no not match");
+    return -1;
+  }
+
   let styles = {
     containerStyle: {
       ...defaultStyles.container,
-      justifyContent: "center",
     },
     imageStyle: {
+      marginTop: height * 0.1,
       maxHeight: height * 0.4,
       minWidth: 300,
       width: width - 100,
@@ -54,6 +97,18 @@ function SignUp( { navigation, route, ...props} ){
       alignItems: "center",
       width: width,
       flex: 0,
+    },
+    wariningText: {
+      marginTop: 10,
+      color: colors.warning,
+      fontSize: 20,
+      fontFamily: fonts.standard,
+    },
+    errorText: {
+      marginTop: 10,
+      color: colors.danger,
+      fontSize: 20,
+      fontFamily: fonts.standard,
     },
   }
 
@@ -73,7 +128,7 @@ function SignUp( { navigation, route, ...props} ){
       />
       <View style={ styles.textInputContainer } >
         <IconTextInput
-          onChangeText={ setUserName }
+          onChangeText={ userName => { checkNameForWarning(userName); setUserName(userName) } }
           value={userName}
           style={{ ...styles.textInputStyle, }} 
           icon={(
@@ -86,7 +141,7 @@ function SignUp( { navigation, route, ...props} ){
           placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
         <IconTextInput
-          onChangeText={ setPassword }
+          onChangeText={ password => { checkPasswordForWarining(password); setPassword(password) } }
           value={password}
           secureTextEntry
           style={{ ...styles.textInputStyle, }} 
@@ -111,7 +166,7 @@ function SignUp( { navigation, route, ...props} ){
           placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
         <IconTextInput
-          onChangeText={ setRepeatPassword }
+          onChangeText={ repeatPw => { checkRepeatPassowrdForWarning(password, repeatPw); setRepeatPassword(repeatPw) } }
           value={repeatPassword}
           secureTextEntry
           style={{ ...styles.textInputStyle, }} 
@@ -135,18 +190,23 @@ function SignUp( { navigation, route, ...props} ){
           placeholder={translate("SignUp_RepeatPassword")}
           placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
+        { localWaring || props.wariningText ? (
+          <Text style={styles.wariningText}>{ localWaring || props.errorText }</Text>
+        ) : null }
+        { localError || props.errorText ? (
+          <Text style={styles.errorText}>{ localError || props.errorText }</Text>
+        ) : null }
+        <Button
+          onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
+          title={translate( "SignUp_SignUp" )}
+          colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
+          textStyle={[{color: "white"}]}
+          primary
+          rounded
+          disabled={props.signUpActive || !userNameOK(userName) || !passwordOK(password) || !repeatPasswordOK(password, repeatPassword)}
+          containerStyle={{ margin: 20 }}
+        />
       </View>
-      <View style={[{flexGrow: 1, maxHeight: Platform.OS == "web" ? 200 : height * 0.02}]} />
-      <Button
-        onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
-        title={translate( "SignUp_SignUp" )}
-        colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-        textStyle={[{color: "white"}]}
-        primary
-        rounded
-        disabled={props.signUpActive || !userNameOK(userName) || !passwordOK(password) || !repeatPasswordOK(password, repeatPassword)}
-        containerStyle={{ margin: 20 }}
-      />
     </SafeAreaView>
   )
 }
@@ -188,6 +248,8 @@ function getIconColor( warningState, colors ){
 export default connect((store) => {
   return {
     signUpActive: store.authReducer.signInState.signUpActive,
+    wariningText: store.authReducer.signUpWarning,
+    errorText: store.authReducer.signUpError,
   };
 })(SignUp);
 

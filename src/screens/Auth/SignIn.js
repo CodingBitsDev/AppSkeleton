@@ -8,12 +8,12 @@ import { ScrollView, StatusBar, Image,  Platform, KeyboardAvoidingView, Dimensio
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
 
-import Button from "../../reuse/Button.js";
-import IconTextInput from "../../reuse/IconTextInput.js";
+import Button from "reuse/Button.js";
+import IconTextInput from "reuse/IconTextInput.js";
 
 //Actions
 import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
-import { signIn } from "../../actions/authActions.js";
+import { signIn, } from "../../actions/authActions.js";
 
 //CusomHooks
 import useWindowSize from "../../hooks/useWindowSize.js";
@@ -25,17 +25,46 @@ import translate from '../../constants/language/languages.js';
 function SignIn( { navigation, route, ...props} ){
   let [ userName, setUserName ] = useState("");
   let [ password, setPassword ] = useState("");
+  let [ localWaring, setLocalWarning ] = useState("");
+  let [ localError, setLocalError ] = useState("");
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
   let { colors, styles: defaultStyles, icons, fonts } = getTheme();
 
+  function checkNameForWarning( userName ) {
+    if (userName.includes(".")){
+      setLocalError( "The following sign is not allowed in the username: \".\"");
+      return;
+    }
+    if (userName.length >= 3){
+      setLocalWarning("")
+      setLocalError("")
+      return;
+    }
+    setLocalWarning("Username should have at least length of 3");
+  }
+
+  function checkPasswordForWarining( password ){
+    if ( false ){
+      return; 
+    }
+    if (password.length >= 6){
+      setLocalWarning("")
+      setLocalError("")
+      return;
+    }
+    setLocalWarning("Password should have at least length of 6");
+    return 0;
+  }
+
+
   let styles = {
     containerStyle: {
       ...defaultStyles.container,
-      justifyContent: "center",
     },
     imageStyle: {
+      marginTop: height * 0.1,
       maxHeight: height * 0.4,
       minWidth: 300,
       width: width - 100,
@@ -54,6 +83,18 @@ function SignIn( { navigation, route, ...props} ){
       width: width,
       flex: 0,
     },
+    wariningText: {
+      marginTop: 10,
+      color: colors.warning,
+      fontSize: 20,
+      fontFamily: fonts.standard,
+    },
+    errorText: {
+      marginTop: 10,
+      color: colors.danger,
+      fontSize: 20,
+      fontFamily: fonts.standard,
+    },
   }
 
   useEffect( () => {
@@ -64,6 +105,7 @@ function SignIn( { navigation, route, ...props} ){
     })
   }, [] )
 
+
   return(
     <SafeAreaView style={[ styles.containerStyle ]} >
       <Image
@@ -72,7 +114,7 @@ function SignIn( { navigation, route, ...props} ){
       />
       <View style={ styles.textInputContainer } >
         <IconTextInput
-          onChangeText={ setUserName }
+          onChangeText={ (username) => { checkNameForWarning(username); setUserName(username) } }
           value={userName}
           style={{ ...styles.textInputStyle, }} 
           icon={(
@@ -86,7 +128,7 @@ function SignIn( { navigation, route, ...props} ){
           placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
         <IconTextInput
-          onChangeText={ setPassword }
+          onChangeText={ password => { checkPasswordForWarining(password); setPassword(password) } }
           value={password}
           secureTextEntry
           style={{ ...styles.textInputStyle, }} 
@@ -106,18 +148,23 @@ function SignIn( { navigation, route, ...props} ){
           placeholder={translate("SignIn_Password")}
           placeholderTextColor={colors.mainTextInputPlaceholderColor}
         />
+        { localWaring || props.wariningText ? (
+          <Text style={styles.wariningText}>{ localWaring || props.errorText }</Text>
+        ) : null }
+        { localError || props.errorText ? (
+          <Text style={styles.errorText}>{ localError || props.errorText }</Text>
+        ) : null }
+        <Button
+          onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
+          title={translate( "SignIn_SignIn" )}
+          colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
+          textStyle={[{color: "white"}]}
+          primary
+          rounded
+          disabled={props.signInActive || !userNameOK(userName) || !passwordOK(password)}
+          containerStyle={{ margin: 20 }}
+        />
       </View>
-      <View style={[{flexGrow: 1, maxHeight: Platform.OS == "web" ? 150 : height * 0.05}]} />
-      <Button
-        onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
-        title={translate( "SignIn_SignIn" )}
-        colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-        textStyle={[{color: "white"}]}
-        primary
-        rounded
-        disabled={props.signInActive || !userNameOK(userName) || !passwordOK(password)}
-        containerStyle={{ margin: 20 }}
-      />
     </SafeAreaView>
   )
 }
@@ -142,6 +189,7 @@ function passwordOK( password ){
   return 0;
 }
 
+
 function getIconColor( warningState, colors ){
   return warningState > -1 ? warningState > 0 ? colors.success : colors.warning : colors.danger; 
 }
@@ -149,6 +197,8 @@ function getIconColor( warningState, colors ){
 export default connect((store) => {
   return {
     signInActive: store.authReducer.signInState.signInActive,
+    wariningText: store.authReducer.signInWarning,
+    errorText: store.authReducer.signInError,
   };
 })(SignIn);
 

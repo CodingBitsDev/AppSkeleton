@@ -7,6 +7,10 @@ const INITIAL_STATE = {
   signUpState: {
     signUpActive: false,
   },
+  signInError: "",
+  signInWarning: "",
+  signUpError: "",
+  signUpWarning: "",
 };
 
 export default function reducer(state=INITIAL_STATE , action) {
@@ -37,6 +41,7 @@ export default function reducer(state=INITIAL_STATE , action) {
           signInState: {...state.signInState,
             signInActive: false,
           },
+          signInError: action.payload.message,
         };
       }
       case "TRYING_TO_SIGN_UP":{
@@ -62,6 +67,7 @@ export default function reducer(state=INITIAL_STATE , action) {
           signUpState: {...state.signUpState,
             signUpActive: false,
           },
+          signUpError: action.payload.message,
         };
       }
       case 'persist/REHYDRATE': {
