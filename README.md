@@ -13,8 +13,8 @@ It tries to not only support both Android and Ios but also the Web in one single
 - Authentification Flow Only Auth actions have to be implemented.
 - Support for responsive web
 - Popup Support
+- Detection of Dark and Light theme as well as designing for both
 
 ## TODO
-- Detection of Dark and Light theme as well as designing for both
 - Image Caching for web images
 - Make Auth flow in its own Component ( or maybe hook )
