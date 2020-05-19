@@ -33,7 +33,7 @@ function SignUp( { navigation, route, ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
-  let { colors, styles: defaultStyles, icons, fonts } = getTheme();
+  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
 
   function checkNameForWarning( userName ){
     if (userName.includes(".")){
@@ -103,12 +103,14 @@ function SignUp( { navigation, route, ...props} ){
       color: colors.warning,
       fontSize: 20,
       fontFamily: fonts.standard,
+      marginHorizontal: 40,
     },
     errorText: {
       marginTop: 10,
       color: colors.danger,
       fontSize: 20,
       fontFamily: fonts.standard,
+      marginHorizontal: 40,
     },
   }
 
@@ -124,7 +126,7 @@ function SignUp( { navigation, route, ...props} ){
     <SafeAreaView style={[ styles.containerStyle ]} >
       <Image
         style={[ styles.imageStyle ]}
-        source={require('../../../assets/Logo/cover-white.png')}
+        source={images.mainLogo}
       />
       <View style={ styles.textInputContainer } >
         <IconTextInput

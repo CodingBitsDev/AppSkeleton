@@ -17,14 +17,14 @@ import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js"
 import useWindowSize from "../../hooks/useWindowSize.js";
 
 //HelperFunctions
-import getTheme from "theme/index.js";
+import getTheme, { THEMES } from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
 function WelcomeScreen( { navigation, route, ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
-  let { colors, styles: defaultStyles, icons, fonts } = getTheme();
+  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme( );
 
   let styles = {
     containerStyle: { 
@@ -59,7 +59,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
     },
     introTextStyle: {
       textAlign: "center",
-      color: "white",
+      color: colors.mainTextColor,
       marginBottom: height * 0.10,
       fontFamily: fonts.standard,
       fontSize: 16,
@@ -71,12 +71,12 @@ function WelcomeScreen( { navigation, route, ...props} ){
       <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
       <Image
         style={[ styles.imageBG ]}
-        source={require('../../../assets/testBGImage.jpg')}
+        source={images.welcomeBackground}
       />
       <ScrollView contentContainerStyle={{ alignItems: "center", height, flex: 1}} style={[ styles.scrollViewStyle ]}>
         <Image
           style={[ styles.imageStyle ]}
-          source={require('../../../assets/Logo/cover-white.png')}
+          source={images.mainLogo}
         />
         <View style={[ styles.elementContainer ]}>
           <Text style={[styles.introTextStyle]}> {translate("WelcomeScreen_WelcomeText")} </Text>

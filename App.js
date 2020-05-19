@@ -25,6 +25,7 @@ import { AppLoading } from 'expo';
 
 //setUpTheming
 import { setTheme, THEMES } from "theme/index.js";
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -39,9 +40,14 @@ export default function App() {
     "Inter-Thin": require( "./assets/fonts/Inter-Thin.ttf" ),
   });
 
-  setTheme( THEMES.DARK, {
-    standard: "Inter-Regular",
-  });
+  let colorScheme = useColorScheme()
+  useEffect( () => {
+    let currentTheme = colorScheme ==  Platform.OS == "web" ? "light" ?THEMES.LIGHT : THEMES.DARK : THEMES.DARK;
+    setTheme( currentTheme, {
+      standard: "Inter-Regular",
+    });
+
+  }, [ colorScheme ])
 
   let [rerender, setRerender ] = useState( Math.random() )
   useEffect( () => {
@@ -60,17 +66,19 @@ export default function App() {
   }, []);
 
   return fontsLoaded  ? (
-    <ResizeComponent>
-      <Provider store={store}>
-        {persistorRef.current != null &&
-            (<PersistGate persistor={ persistorRef.current }>
-              <SafeAreaProvider>
-                <RootNavigator />
-              </SafeAreaProvider>
-            </PersistGate>)
-        } 
-      </Provider>
-    </ResizeComponent>
+    <AppearanceProvider>
+      <ResizeComponent>
+        <Provider store={store}>
+          {persistorRef.current != null &&
+              (<PersistGate persistor={ persistorRef.current }>
+                <SafeAreaProvider>
+                  <RootNavigator />
+                </SafeAreaProvider>
+              </PersistGate>)
+          } 
+        </Provider>
+      </ResizeComponent>
+    </AppearanceProvider>
   ) : (<AppLoading />);
 }
 

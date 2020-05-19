@@ -8,7 +8,7 @@ module.exports = function(api) {
       [
         'module-resolver',
         {
-          extensions: [".ios.js", ".android.js", ".js", ".json",],
+          extensions: [".ios.js", ".android.js", ".js", ".json", ".png"],
           alias: {...paths }
         }
       ]
