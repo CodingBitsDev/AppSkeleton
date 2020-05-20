@@ -14,24 +14,47 @@ function getParams( screeName, reducerState, params ){
 }
 
 
-export default function useNavActions() {
+export default function useNavActions( ) {
   const navigation = useNavigation();
   
   let navigate = ( screenName, screenKey, params ) => {
     let reducerState = store.getState();
-    let dispatch = store.dispatch;
 
-    let navAction = CommonActions.navigate({
+    navigation.dispatch(CommonActions.navigate({
       name: screenName,
       key: screenKey || screenName,
       params: {
         ...getParams( screenName, reducerState, params ),
       }
-    });
-    navigation.dispatch( navAction )
+    }))
   };
 
 
   return navigate
 }
 
+let _navigation = null;
+export function setNavigation( navigation ){
+  _navigation = navigation;
+}
+
+navigate( screenName, screenKey, params ){
+  //Get Necessary variables
+  const navigation = _navigation;
+  if (navigation == null){
+    console.warn( "Before calling navigate the navigation object needs to be set via the setNavigation function" );
+    return;
+  }
+
+  let reducerState = store.getState();
+
+  navigation.dispatch(CommonActions.navigate({
+    name: screenName,
+    key: screenKey || screenName,
+    params: {
+      ...getParams( screenName, reducerState, params ),
+    }
+  }))
+
+
+}
