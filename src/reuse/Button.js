@@ -40,6 +40,10 @@ function Button({ style, start, end, locations, ...props }){
   let [ paddingStyle, containerStyle ] = extractPaddingStyles(props.containerStyle);
   let textStyle = makeStyle(props.textStyle);
 
+  let maxScaleIncrease = 5;
+  let scaleX = containerSize && containerSize.height > maxScaleIncrease * 2 ? 1 + maxScaleIncrease/containerSize.height : 1.1;
+  let scaleY = containerSize && containerSize.width > maxScaleIncrease * 2 ? 1 + maxScaleIncrease/containerSize.width : 1.1;
+  let scale = Math.min( scaleX, scaleY );
   let btnStyle = {
     container: {
       minHeight: 30,
@@ -53,7 +57,7 @@ function Button({ style, start, end, locations, ...props }){
       ...(props.block ? { width: "95%",} : {} ),
       ...(props.noShadow || props.transparent || props.outlined ? {} : styles.shadow ),
       ...( containerStyle || {} ),
-      ...(hover & !props.nohover && !props.disabled ? { transform: [ { scaleX: 1.1 }, { scaleY: 1.1 } ] } : {}),
+      ...(hover & !props.nohover && !props.disabled ? { transform: [ { scaleX: scale }, { scaleY: scale } ] } : {}),
     },
     text: {
       color: props.transparent || props.outlined ? btnColor : textColor,
@@ -63,6 +67,7 @@ function Button({ style, start, end, locations, ...props }){
     contentStyle:{
       padding: props.transparent ? 0 : 10,
       alignSelf: "stretch",
+      flexGrow: 1,
       justifyContent: "center",
       alignItems: "center" 
     },
@@ -143,6 +148,8 @@ Button.propTypes = {
   start: PropTypes.array,
   end: PropTypes.array,
   locations: PropTypes.array,
+  //
+  style: PropTypes.object,
 };
 
 export default Button

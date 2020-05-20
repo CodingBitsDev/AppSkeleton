@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { connect } from "react-redux"; 
 
-import { View, Text, Button  } from 'react-native';
+import { View, Text, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Button from "reuse/Button.js";
 
 import { openHomeScreen, openPopup } from "../actions/navActions.js";
 
@@ -18,6 +19,8 @@ function HomeScreen2(props) {
         onPress={ () => { openPopup() } }
         title="Open Empty Popup"
         color="#F00"
+        containerStyle={{
+        }}
       />
     </SafeAreaView>
   );

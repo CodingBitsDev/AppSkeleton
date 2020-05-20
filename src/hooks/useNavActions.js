@@ -33,12 +33,16 @@ export default function useNavActions( ) {
   return navigate
 }
 
+//!!! Waring !!!
+//USE NOT ADVICED
+//The following function should only be used if you are using non functional components and don't have acess to hooks
 let _navigation = null;
+
 export function setNavigation( navigation ){
   _navigation = navigation;
 }
 
-navigate( screenName, screenKey, params ){
+export function navigate( screenName, screenKey, params ){
   //Get Necessary variables
   const navigation = _navigation;
   if (navigation == null){
@@ -55,6 +59,4 @@ navigate( screenName, screenKey, params ){
       ...getParams( screenName, reducerState, params ),
     }
   }))
-
-
 }
