@@ -10,21 +10,20 @@ import { Icon } from 'react-native-elements';
 
 import Button from "../../reuse/Button.js";
 
-//Actions
-import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
-
-//CusomHooks
-import useWindowSize from "../../hooks/useWindowSize.js";
+//Hooks
+import useWindowSize from "hooks/useWindowSize.js";
+import useNavActions from "hooks/useNavActions.js";
 
 //HelperFunctions
 import getTheme, { THEMES } from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
-function WelcomeScreen( { navigation, route, ...props} ){
+function WelcomeScreen( { ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
   let { colors, styles: defaultStyles, icons, fonts, images } = getTheme( );
+  let navigate = useNavActions(); 
 
   let styles = {
     containerStyle: { 
@@ -81,7 +80,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
         <View style={[ styles.elementContainer ]}>
           <Text style={[styles.introTextStyle]}> {translate("WelcomeScreen_WelcomeText")} </Text>
           <Button
-            onPress={ () => { navigation.dispatch(openSignInScreen()) } }
+            onPress={ () => { navigate("SignIn") } }
             title={translate( "WelcomeScreen_SignIn" )}
             colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
             textStyle={[{color: "white"}]}
@@ -90,7 +89,7 @@ function WelcomeScreen( { navigation, route, ...props} ){
             containerStyle={{ marginBottom: 20 }}
           />
           <Button
-            onPress={ () => { navigation.dispatch(openSignUpScreen()) } }
+            onPress={ () => { navigate("SignUp") } }
             title={translate( "WelcomeScreen_SignUp" )}
             primary
             transparent

@@ -5,6 +5,7 @@ const paths = {
   theme: path.resolve(__dirname, './src/constants/theming/'),
   reuse: path.resolve(__dirname, './src/reuse/'),
   assets: path.resolve(__dirname, './assets'),
+  hooks: path.resolve(__dirname, './src/hooks'),
 }
 
 module.exports = paths;

@@ -31,4 +31,4 @@ function getComposer(middleware){
   }
 }
 
-export default   createStore(persistedReducer, getComposer(middleware));
+export default createStore(persistedReducer, getComposer(middleware));

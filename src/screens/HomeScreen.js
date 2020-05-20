@@ -1,32 +1,41 @@
+//Libraries
 import * as React from 'react';
 import { connect } from "react-redux"; 
+
+//Components
 import { View, Text,} from 'react-native';
-
-import Button from "reuse/Button.js";
-
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { openHomeScreen2, openPopup } from "../actions/navActions.js";
-import { signOut } from "../actions/authActions.js";
-
+import Button from "reuse/Button.js";
 import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 
+//Actions
+import { signOut } from "../actions/authActions.js";
+
+//Hooks
+import useNavActions from "hooks/useNavActions.js";
+import useOpenPopup from "hooks/useOpenPopup.js";
+
+
+//HelperFunctions
 import getTheme from "theme/index.js";
 
 function HomeScreen(props) {
   let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
-  console.log("THEME", colors)
+
+  let navigate = useNavActions();
+  let openPopup = useOpenPopup();
 
   return (
     <SafeAreaView style={{backgroundColor: colors.background , flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
-        onPress={ () => { props.navigation.dispatch(openHomeScreen2()) } }
+        onPress={ () => { navigate("HomeScreen2") } }
         title="Open Home Screen 2"
         primary
       />
       <Button
-        onPress={ () => { props.dispatch(openPopup(props.navigation, popupContent(props), {closeOnBackPress : true, closeOnOutsidePress: true} )) } }
+        onPress={ () => { openPopup( <MessageBoxPopup />, {closeOnBackPress : true, closeOnOutsidePress: true}) } }
         title="Open Popup"
         warning
       />
@@ -36,12 +45,6 @@ function HomeScreen(props) {
         danger
       />
     </SafeAreaView>
-  );
-}
-
-function popupContent(props){
-  return (
-    <MessageBoxPopup />
   );
 }
 
