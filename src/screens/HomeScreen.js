@@ -15,9 +15,10 @@ import getTheme from "theme/index.js";
 
 function HomeScreen(props) {
   let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
+  console.log("THEME", colors)
 
   return (
-    <SafeAreaView style={{backgroundColor: colors.backgroundColor, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <SafeAreaView style={{backgroundColor: colors.background , flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
         onPress={ () => { props.navigation.dispatch(openHomeScreen2()) } }

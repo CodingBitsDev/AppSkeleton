@@ -1,19 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { withResizeDetector } from 'react-resize-detector';
+import { Platform, StyleSheet, } from 'react-native';
 
 //SafeArea
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //Navigation
-import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from "./src/navigation/RootNavigator.js";
 
 //Redux
 import { Provider } from 'react-redux';
-import { persistStore, autoRehydrate, persistReducer } from 'redux-persist'; 
+import { persistStore  } from 'redux-persist'; 
 import { PersistGate } from 'redux-persist/integration/react'
-import persistStoreConfig from './src/configs/persistStoreConfig.js';
 import store from "./src/configs/store.js";
 
 //GlobalModal
@@ -26,6 +23,12 @@ import { AppLoading } from 'expo';
 //setUpTheming
 import { setTheme, THEMES } from "theme/index.js";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
+
+const APEARANCE_TYPES =  {
+  "light": THEMES.LIGHT,
+  "dark": THEMES.DARK,
+  "no-preference": THEMES.DARK,
+}
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -42,7 +45,7 @@ export default function App() {
 
   let colorScheme = useColorScheme()
   useEffect( () => {
-    let currentTheme = colorScheme ==  Platform.OS == "web" ? "light" ?THEMES.LIGHT : THEMES.DARK : THEMES.DARK;
+    let currentTheme = Platform.OS !== "web" ? APEARANCE_TYPES[colorScheme] || THEMES.DARK : THEMES.DARK;
     setTheme( currentTheme, {
       standard: "Inter-Regular",
     });
@@ -72,7 +75,9 @@ export default function App() {
           {persistorRef.current != null &&
               (<PersistGate persistor={ persistorRef.current }>
                 <SafeAreaProvider>
-                  <RootNavigator />
+                  {rehydrated ? (
+                    <RootNavigator />
+                  ) : null}
                 </SafeAreaProvider>
               </PersistGate>)
           } 

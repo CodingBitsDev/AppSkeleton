@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 /*  Middleware, that does stuff with the actions before it passes them
     to the reducers */
-import logger, { createLogger } from "redux-logger"; // Loggs the states, to see the previous state.
 import thunk from "redux-thunk"; // Allows async functions to be put into the Actions
 import promiseMiddleware from "redux-promise"; //Allows you to handle Promises better like AsyncStorage
 

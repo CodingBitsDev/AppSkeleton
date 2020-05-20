@@ -1,10 +1,10 @@
 //Libraries
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
 
 
 //Components
-import { ScrollView, StatusBar, Image,  Platform, KeyboardAvoidingView, Dimensions, StyleSheet, View, Text, } from 'react-native';
+import { Image,  Dimensions, View, Text, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
 
@@ -12,14 +12,13 @@ import Button from "reuse/Button.js";
 import IconTextInput from "reuse/IconTextInput.js";
 
 //Actions
-import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
 import { signIn, } from "../../actions/authActions.js";
 
 //CusomHooks
 import useWindowSize from "../../hooks/useWindowSize.js";
 
 //HelperFunctions
-import getTheme from "theme/index.js";
+import getTheme, {THEMES} from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
 function SignIn( { navigation, route, ...props} ){
@@ -30,7 +29,7 @@ function SignIn( { navigation, route, ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
   let { containerHeight, containerWidth } = { containerHeight: Dimensions.get("window").width, containerWidth: Dimensions.get("window").height  }
 
-  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
+  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme(  );
 
   function checkNameForWarning( userName ) {
     if (userName.includes(".")){
@@ -46,7 +45,9 @@ function SignIn( { navigation, route, ...props} ){
   }
 
   function checkPasswordForWarining( password ){
-    if ( false ){
+    //SET when there are breaking password rules
+    let errorCase = false;
+    if ( errorCase ){
       return; 
     }
     if (password.length >= 6){
@@ -109,9 +110,9 @@ function SignIn( { navigation, route, ...props} ){
 
 
   return(
-    <SafeAreaView style={[ styles.containerStyle ]} >
+    <SafeAreaView style={ styles.containerStyle } >
       <Image
-        style={[ styles.imageStyle ]}
+        style={ styles.imageStyle }
         source={images.mainLogo}
       />
       <View style={ styles.textInputContainer } >
@@ -123,7 +124,7 @@ function SignIn( { navigation, route, ...props} ){
             <Icon
               name='user-circle-o'
               type="font-awesome"
-              color={userName != "" ? getIconColor(userNameOK(userName), colors) : "black" } 
+              color={userName != "" ? getIconColor(userNameOK(userName), colors) : colors.mainTextInputTextColor } 
             />
           )}
           placeholder={translate("SignIn_Username")}
@@ -136,14 +137,14 @@ function SignIn( { navigation, route, ...props} ){
           style={{ ...styles.textInputStyle, }} 
           icon={(
             <View 
-              style={[{ borderColor: password != "" ? getIconColor(passwordOK(password), colors) : "black", 
+              style={[{ borderColor: password != "" ? getIconColor(passwordOK(password), colors) : colors.mainTextInputTextColor,
                   borderWidth: 1.5,
                   height: 25, width: 25, alignItems: "center", justifyContent: "center" 
               }, defaultStyles.roundConers.rounded ]}>
               <Icon 
                 solid="false" name='lock'
                 type="font-awesome" 
-                color={password != "" ? getIconColor(passwordOK(password), colors) : "black" } 
+                color={password != "" ? getIconColor(passwordOK(password), colors) : colors.mainTextInputTextColor } 
               />
             </View>
           )}
@@ -160,7 +161,7 @@ function SignIn( { navigation, route, ...props} ){
           onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
           title={translate( "SignIn_SignIn" )}
           colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-          textStyle={[{color: "white"}]}
+          textStyle={[{ color: colors.primaryButtonColor }]}
           primary
           rounded
           disabled={props.signInActive || !userNameOK(userName) || !passwordOK(password)}
@@ -182,7 +183,9 @@ function userNameOK( userName ){
 }
 
 function passwordOK( password ){
-  if ( false ){
+  //SET when there are breaking password rules
+  let errorCase = false;
+  if ( errorCase ){
     return -1;
   }
   if (password.length >= 6){
