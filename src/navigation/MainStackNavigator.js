@@ -16,6 +16,7 @@ let MainStackNavigator = () => {
     <Stack.Navigator 
       keyboardHandlingEnabled={false}
       screenOptions={{
+        headerTintColor: colors.mainTextColor,
         headerStyle: {
           backgroundColor: colors.surface,
         }

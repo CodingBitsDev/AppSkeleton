@@ -13,7 +13,7 @@ function HomeScreen2(props) {
       <Text>Home Screen 2</Text>
       <Button
         onPress={ () => { props.dispatch(openPopup(props.navigation)) } }
-        title="Open Popup"
+        title="Open Empty Popup"
         color="#F00"
       />
     </SafeAreaView>

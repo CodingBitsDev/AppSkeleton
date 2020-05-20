@@ -15,7 +15,7 @@ import AuthStackNavigator from "./AuthStackNavigator.js";
 
 //Actions
 import { setNavState } from "../actions/navActions.js";
-import { setNotSignedIn } from "../actions/authActions.js";
+import { checkSignIn } from "../actions/authActions.js";
 
 const Stack = createStackNavigator();
 
@@ -34,7 +34,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
   //Mock LoginCheckTime
   useEffect( () => {
     setTimeout( () => {
-      props.dispatch(setNotSignedIn());
+      props.dispatch(checkSignIn());
     }, 1 );
   }, [])
 

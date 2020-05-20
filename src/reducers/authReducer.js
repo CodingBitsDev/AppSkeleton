@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   signInWarning: "",
   signUpError: "",
   signUpWarning: "",
+  persistSignedIn: null,
 };
 
 export default function reducer(state=INITIAL_STATE , action) {
@@ -28,11 +29,13 @@ export default function reducer(state=INITIAL_STATE , action) {
       }
       case "SIGN_IN_SUCESSFULL": {
         return {...state, 
+          checkingLogin: false,
           loading: false,
           signInState: {...state.signInState,
             signInActive: false,
           },
           user: action.payload.user,
+          persistSignedIn: action.payload.user
         };
       }
       case "SIGN_IN_FAILED": {
@@ -70,8 +73,16 @@ export default function reducer(state=INITIAL_STATE , action) {
           signUpError: action.payload.message,
         };
       }
+      case "USER_SIGNED_OUT": {
+        return {...INITIAL_STATE,
+          checkingLogin: false,
+        }
+      }
       case 'persist/REHYDRATE': {
-        return {...state, }
+        let authState = action.payload && action.payload.authReducer || {};
+        return {...state,
+          persistSignedIn: authState.persistSignedIn || INITIAL_STATE.persistSignedIn,
+        }
       }
     }
     return state;

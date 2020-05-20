@@ -1,8 +1,20 @@
-export async function setNotSignedIn(){
+export async function checkSignIn(){
+  //This code has to be changed depending on how the signinCheck is going to be done
   return( (dispatch, getState) => {
-    dispatch({
-      type: "NOT_SIGNED_IN",
-    });
+    let authState = getState().authReducer || {};
+    if ( !authState.persistSignedIn ) {
+      dispatch({
+        type: "NOT_SIGNED_IN",
+      });
+    } else {
+      dispatch({
+        type: "SIGN_IN_SUCESSFULL",
+        payload: {
+          user: authState.persistSignedIn,
+          relogin: true,
+        }
+      })
+    }
   });
 }
 
@@ -22,6 +34,7 @@ export async function signIn( userName, password ){
       dispatch({
         type: "SIGN_IN_SUCESSFULL",
         payload: {
+          relogin: false,
           userName,
           password,
           user,
@@ -75,8 +88,14 @@ export async function signUp( userName, password ){
         error,
       },
     });
-
     }
+  });
+}
+
+export async function signOut(){
+  return( async (dispatch, getState) => {
+    //DO Stuff on server to sign user out
+    dispatch( { type: "USER_SIGNED_OUT" } )
 
   });
 }
