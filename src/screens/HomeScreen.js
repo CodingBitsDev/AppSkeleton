@@ -10,7 +10,7 @@ import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 
 function HomeScreen(props) {
   return (
-    <SafeAreaView style={{backgroundColor:"blue", flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
         onPress={ () => { props.navigation.dispatch(openHomeScreen2()) } }

@@ -5,20 +5,28 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from "../screens/HomeScreen.js";
 import HomeScreen2 from "../screens/HomeScreen2.js";
 
+import getTheme from "theme/index.js";
+
 const Stack = createStackNavigator();
+
+let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
+
 let MainStackNavigator = () => {
   return (
-    <Stack.Navigator keyboardHandlingEnabled={false} >
+    <Stack.Navigator 
+      keyboardHandlingEnabled={false}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.surface,
+        }
+      }}
+    >
       <Stack.Screen 
         name="HomeScreen"
         key="HomeScreen"
         component={HomeScreen}
         options={{
           title: 'My home',
-          headerShown: false,
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
         }}
       />
       <Stack.Screen name="HomeScreen2" component={HomeScreen2}/>
