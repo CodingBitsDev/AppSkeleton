@@ -58,7 +58,8 @@
     "babel-preset-expo": "~8.1.0",
     "eslint": "^7.0.0",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-native": "^3.8.1"
+    "eslint-plugin-react-native": "^3.8.1",
+    "flow-bin": "^0.125.1"
   },
   "jest": {
     "preset": "react-native"

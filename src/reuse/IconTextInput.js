@@ -1,3 +1,4 @@
+// @flow
 import React, {useState, useEffect} from "react";
 import PropTypes from 'prop-types';
 import {ActivityIndicator, Platform, TextInput, View, Dimensions, } from "react-native";
@@ -44,7 +45,7 @@ function IconTextInput({ style, ...props }) {
   }
 
   return (
-    <View style={[styles.container, ]} { ...props } >
+    <View style={styles.container} { ...props } >
       <View
         style={styles.iconContainer}
         onLayout={ event => { setIconSize({width: event.nativeEvent.layout.width, height: event.nativeEvent.layout.height}) }}
@@ -55,5 +56,10 @@ function IconTextInput({ style, ...props }) {
     </View>
   )
 }
+
+IconTextInput.propTypes = {
+  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array, ]),
+  icon: PropTypes.element,
+};
 
 export default IconTextInput;
