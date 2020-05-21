@@ -103,3 +103,9 @@ export async function signOut(){
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function processedWithoutAccount(){
+  return ( async (dispatch, getState) => {
+    dispatch({type: "PROCEED_WITHOUT_LOGIN" });
+  });
+}

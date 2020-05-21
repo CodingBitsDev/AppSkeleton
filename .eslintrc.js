@@ -25,6 +25,7 @@ module.exports = {
   ],
   "rules": {
     "no-unused-vars" : 0,
+    "react/display-name": 0,
     "react-native/no-unused-styles": 1,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 0,

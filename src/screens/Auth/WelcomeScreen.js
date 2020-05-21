@@ -1,6 +1,7 @@
 //Libraries
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
+import PropTypes from 'prop-types';
 
 
 //Components
@@ -17,6 +18,9 @@ import useNavActions from "hooks/useNavActions.js";
 //HelperFunctions
 import getTheme, { THEMES } from "theme/index.js";
 import translate from '../../constants/language/languages.js';
+
+//Actions
+import { processedWithoutAccount } from "../../actions/authActions.js";
 
 function WelcomeScreen( { ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
@@ -95,10 +99,21 @@ function WelcomeScreen( { ...props} ){
             transparent
             containerStyle={{ marginBottom: 20 }}
           />
+          <Button
+            onPress={ () => {  props.dispatch( processedWithoutAccount() ) }}
+            title={translate( "WelcomeScreen_ProceedWithoutLogin" )}
+            primary
+            transparent
+            containerStyle={{ marginBottom: 20 }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   )
+}
+
+WelcomeScreen.propTypes = {
+  dispatch: PropTypes.function,
 }
 
 export default connect((store) => {

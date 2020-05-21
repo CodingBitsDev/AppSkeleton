@@ -1,5 +1,5 @@
 //Libraries
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from "react-redux"; 
 import PropTypes from 'prop-types';
 
@@ -27,6 +27,28 @@ function HomeScreen(props) {
   let navigate = useNavActions();
   let openPopup = useOpenPopup();
 
+  useEffect( () => {
+    props.navigation.setOptions({
+      headerRight: () => {
+        return (
+          <Button
+            onPress={ () => { props.dispatch(signOut()) }}
+            title="SignOut"
+            danger
+            transparent
+            containerStyle={{
+              marginHorizontal: 20,
+            }}
+            textStyle={{
+              //fontWeight: "bold",
+              fontSize: 18,
+            }}
+          />
+        )
+      },
+    });
+  }, [])
+
   return (
     <SafeAreaView style={{backgroundColor: colors.background , flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
@@ -40,17 +62,13 @@ function HomeScreen(props) {
         title="Open Popup"
         warning
       />
-      <Button
-        onPress={ () => { props.dispatch(signOut()) }}
-        title="SignOut"
-        danger
-      />
     </SafeAreaView>
   );
 }
 
 HomeScreen.propTypes = {
   dispatch: PropTypes.function,
+  navigation: PropTypes.object,
 }
 
 export default connect((store) => {

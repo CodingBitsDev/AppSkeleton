@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 import {connect} from "react-redux"
+import PropTypes from 'prop-types';
 
 //NavSpecific
 import { NavigationContainer } from '@react-navigation/native';
@@ -73,7 +74,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
       {...( Platform.OS == "web" ? {linking:linking} : {} ) }
     >
       <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
-        { user ? (
+        { user || props.processedWithoutAccount ? (
           <Stack.Screen name="Main" component={MainStackNavigator}/>
         ) : (
           <Stack.Screen name="Auth" component={AuthStackNavigator}/>
@@ -125,11 +126,15 @@ function getActiveRouteName( state ){
 }
 
 
+RootNavigator.propTypes = {
+  processedWithoutAccount: PropTypes.bool,
+}
 
 export default connect((store) => {
   return {
     user: store.authReducer.user,
     checkingLogin: store.authReducer.checkingLogin,
+    processedWithoutAccount: store.authReducer.processedWithoutAccount,
     currentNavAction: store.navReducer.currentNavAction,
   };
 })(RootNavigator);

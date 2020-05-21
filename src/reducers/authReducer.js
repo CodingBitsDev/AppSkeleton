@@ -1,4 +1,5 @@
 const INITIAL_STATE = {
+  processedWithoutAccount: false,
   user: null,
   checkingLogin: true,
   signInState: {
@@ -35,7 +36,8 @@ export default function reducer(state=INITIAL_STATE , action) {
             signInActive: false,
           },
           user: action.payload.user,
-          persistSignedIn: action.payload.user
+          persistSignedIn: action.payload.user,
+          processedWithoutAccount: false,
         };
       }
       case "SIGN_IN_FAILED": {
@@ -78,10 +80,16 @@ export default function reducer(state=INITIAL_STATE , action) {
           checkingLogin: false,
         }
       }
+      case "PROCEED_WITHOUT_LOGIN": {
+        return {...state,
+          processedWithoutAccount: true,
+        }
+      }
       case 'persist/REHYDRATE': {
         let authState = action.payload && action.payload.authReducer || {};
         return {...state,
           persistSignedIn: authState.persistSignedIn || INITIAL_STATE.persistSignedIn,
+          processedWithoutAccount: authState.processedWithoutAccount || INITIAL_STATE.processedWithoutAccount,
         }
       }
     }

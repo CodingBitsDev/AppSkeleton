@@ -12,4 +12,5 @@ export default {
   WelcomeScreen_WelcomeText: "Welcome To AppSkeleton. This Project tries to add all necessary parts together that are usefull regardless of the type of App",
   WelcomeScreen_SignIn: "Sign in",
   WelcomeScreen_SignUp: "Register",
+  WelcomeScreen_ProceedWithoutLogin: "Procced without login",
 }
