@@ -57,7 +57,7 @@ function Button({ style, start, end, locations, ...props }){
       ...(props.block ? { width: "95%",} : {} ),
       ...(props.noShadow || props.transparent || props.outlined ? {} : styles.shadow ),
       ...( containerStyle || {} ),
-      ...(hover & !props.nohover && !props.disabled ? { transform: [ { scaleX: scale }, { scaleY: scale } ] } : {}),
+      ...(hover & !props.noHover && !props.disabled ? { transform: [ { scaleX: scale }, { scaleY: scale } ] } : {}),
     },
     text: {
       color: props.transparent || props.outlined ? btnColor : textColor,
@@ -129,6 +129,7 @@ Button.propTypes = {
   info: PropTypes.bool, 
   color: PropTypes.string,
   disabledColor: PropTypes.string,
+  textColor: PropTypes.string,
   //ShapeProps
   full: PropTypes.bool,
   block: PropTypes.bool,
@@ -148,8 +149,12 @@ Button.propTypes = {
   start: PropTypes.array,
   end: PropTypes.array,
   locations: PropTypes.array,
-  //
+  //Interaction Props
+  noHover: PropTypes.bool,
+  //StandardProps
   style: PropTypes.object,
+  //DataProps
+  title: PropTypes.title,
 };
 
 export default Button

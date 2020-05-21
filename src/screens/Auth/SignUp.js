@@ -1,6 +1,7 @@
 //Libraries
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
+import PropTypes from 'prop-types';
 
 
 //Components
@@ -49,7 +50,9 @@ function SignUp( { navigation, route, ...props} ){
   }
 
   function checkPasswordForWarining( password ){
-    if ( false ){
+    //SET when there are breaking password rules
+    let errorCase = false;
+    if ( errorCase ){
       setLocalError( "Some Password Error");
       return;
     }
@@ -123,9 +126,9 @@ function SignUp( { navigation, route, ...props} ){
   }, [] )
 
   return(
-    <SafeAreaView style={[ styles.containerStyle ]} >
+    <SafeAreaView style={ styles.containerStyle } >
       <Image
-        style={[ styles.imageStyle ]}
+        style={ styles.imageStyle }
         source={images.mainLogo}
       />
       <View style={ styles.textInputContainer } >
@@ -135,7 +138,7 @@ function SignUp( { navigation, route, ...props} ){
           style={{ ...styles.textInputStyle, }} 
           icon={(
             <Icon
-              color={userName != "" ? getIconColor(userNameOK(userName), colors) : "black" } 
+              color={userName != "" ? getIconColor(userNameOK(userName), colors) : colors.mainTextInputTextColor } 
               name='user-circle-o'
               type="font-awesome"
             />)}
@@ -149,7 +152,7 @@ function SignUp( { navigation, route, ...props} ){
           style={{ ...styles.textInputStyle, }} 
           icon={(
             <View 
-              style={[{ borderColor: password != "" ? getIconColor(passwordOK(password), colors) : "black", 
+              style={[{ borderColor: password != "" ? getIconColor(passwordOK(password), colors) : colors.mainTextInputTextColor,
                   borderWidth: 1.5, 
                   height: 25,
                   width: 25,
@@ -158,7 +161,7 @@ function SignUp( { navigation, route, ...props} ){
               }, defaultStyles.roundConers.rounded ]}
             >
               <Icon 
-                color={password != "" ? getIconColor(passwordOK(password), colors) : "black"}
+                color={password != "" ? getIconColor(passwordOK(password), colors) : colors.mainTextInputTextColor}
                 name='lock'
                 type="font-awesome"
               />
@@ -174,7 +177,7 @@ function SignUp( { navigation, route, ...props} ){
           style={{ ...styles.textInputStyle, }} 
           icon={(
             <View 
-              style={[{ borderColor: repeatPassword != "" ? getIconColor(repeatPasswordOK(password, repeatPassword), colors) : "black",
+              style={[{ borderColor: repeatPassword != "" ? getIconColor(repeatPasswordOK(password, repeatPassword), colors) : colors.mainTextInputTextColor,
                   borderWidth: 1.5, 
                   height: 25,
                   width: 25,
@@ -183,7 +186,7 @@ function SignUp( { navigation, route, ...props} ){
               }, defaultStyles.roundConers.rounded ]}
             >
               <Icon 
-                color={repeatPassword != "" ? getIconColor(repeatPasswordOK(password, repeatPassword), colors) : "black"}
+                color={repeatPassword != "" ? getIconColor(repeatPasswordOK(password, repeatPassword), colors) : colors.mainTextInputTextColor}
                 name='lock'
                 type="font-awesome"
               />
@@ -202,7 +205,7 @@ function SignUp( { navigation, route, ...props} ){
           onPress={ () => { props.dispatch( signIn( userName, password ) ) } }
           title={translate( "SignUp_SignUp" )}
           colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-          textStyle={[{color: "white"}]}
+          textStyle={{color: colors.primaryButtonColor}}
           primary
           rounded
           disabled={props.signUpActive || !userNameOK(userName) || !passwordOK(password) || !repeatPasswordOK(password, repeatPassword)}
@@ -224,7 +227,9 @@ function userNameOK( userName ){
 }
 
 function passwordOK( password ){
-  if ( false ){
+  //SET when there are breaking password rules
+  let errorCase = false;
+  if ( errorCase ){
     return -1;
   }
   if (password.length >= 6){
@@ -247,6 +252,17 @@ function getIconColor( warningState, colors ){
   return warningState > -1 ? warningState > 0 ? colors.success : colors.warning : colors.danger; 
 }
 
+SignUp.propTypes = {
+  wariningText: PropTypes.string,
+  errorText: PropTypes.string,
+  signUpActive: PropTypes.bool,
+  //Should be introduced by Redux connect function
+  dispatch: PropTypes.function,
+  //Should be introduced by Navigation
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};
+
 export default connect((store) => {
   return {
     signUpActive: store.authReducer.signInState.signUpActive,
@@ -254,4 +270,3 @@ export default connect((store) => {
     errorText: store.authReducer.signUpError,
   };
 })(SignUp);
-

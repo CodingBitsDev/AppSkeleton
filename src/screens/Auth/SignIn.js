@@ -1,6 +1,7 @@
 //Libraries
 import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux"; //Gets the data from the store and pushes them into the this.props of the component
+import PropTypes from 'prop-types';
 
 
 //Components
@@ -198,6 +199,17 @@ function passwordOK( password ){
 function getIconColor( warningState, colors ){
   return warningState > -1 ? warningState > 0 ? colors.success : colors.warning : colors.danger; 
 }
+
+SignIn.propTypes = {
+  wariningText: PropTypes.string,
+  errorText: PropTypes.string,
+  signInActive: PropTypes.bool,
+  //Should be introduced by Redux connect function
+  dispatch: PropTypes.function,
+  //Should be introduced by Navigation
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};
 
 export default connect((store) => {
   return {

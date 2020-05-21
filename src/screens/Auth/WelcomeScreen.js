@@ -66,24 +66,24 @@ function WelcomeScreen( { ...props} ){
   }
 
   return(
-    <SafeAreaView style={[ styles.containerStyle ]} >
+    <SafeAreaView style={ styles.containerStyle } >
       <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
       <Image
-        style={[ styles.imageBG ]}
+        style={styles.imageBG}
         source={images.welcomeBackground}
       />
-      <ScrollView contentContainerStyle={{ alignItems: "center", height, flex: 1}} style={[ styles.scrollViewStyle ]}>
+      <ScrollView contentContainerStyle={{ alignItems: "center", height, flex: 1}} style={ styles.scrollViewStyle }>
         <Image
-          style={[ styles.imageStyle ]}
+          style={styles.imageStyle}
           source={images.mainLogo}
         />
-        <View style={[ styles.elementContainer ]}>
-          <Text style={[styles.introTextStyle]}> {translate("WelcomeScreen_WelcomeText")} </Text>
+        <View style={styles.elementContainer}>
+          <Text style={styles.introTextStyle}> {translate("WelcomeScreen_WelcomeText")} </Text>
           <Button
             onPress={ () => { navigate("SignIn") } }
             title={translate( "WelcomeScreen_SignIn" )}
             colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-            textStyle={[{color: "white"}]}
+            textStyle={{ color: colors.primaryButtonColor }}
             primary
             rounded
             containerStyle={{ marginBottom: 20 }}
