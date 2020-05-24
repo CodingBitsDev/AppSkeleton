@@ -113,7 +113,7 @@ function WelcomeScreen( { ...props} ){
 }
 
 WelcomeScreen.propTypes = {
-  dispatch: PropTypes.function,
+  dispatch: PropTypes.func,
 }
 
 export default connect((store) => {

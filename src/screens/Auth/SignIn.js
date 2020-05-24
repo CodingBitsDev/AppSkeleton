@@ -143,7 +143,8 @@ function SignIn( { navigation, route, ...props} ){
                   height: 25, width: 25, alignItems: "center", justifyContent: "center" 
               }, defaultStyles.roundConers.rounded ]}>
               <Icon 
-                solid="false" name='lock'
+                solid={false}
+                name='lock'
                 type="font-awesome" 
                 color={password != "" ? getIconColor(passwordOK(password), colors) : colors.mainTextInputTextColor } 
               />
@@ -205,7 +206,7 @@ SignIn.propTypes = {
   errorText: PropTypes.string,
   signInActive: PropTypes.bool,
   //Should be introduced by Redux connect function
-  dispatch: PropTypes.function,
+  dispatch: PropTypes.func,
   //Should be introduced by Navigation
   navigation: PropTypes.object,
   route: PropTypes.object,

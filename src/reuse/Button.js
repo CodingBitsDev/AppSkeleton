@@ -68,7 +68,6 @@ function Button({ style, start, end, locations, ...props }){
     contentStyle:{
       padding: props.transparent ? 0 : 10,
       alignSelf: "stretch",
-      flexGrow: 1,
       justifyContent: "center",
       alignItems: "center" 
     },
@@ -155,7 +154,7 @@ Button.propTypes = {
   //StandardProps
   style: PropTypes.object,
   //DataProps
-  title: PropTypes.title,
+  title: PropTypes.string,
 };
 
 export default Button

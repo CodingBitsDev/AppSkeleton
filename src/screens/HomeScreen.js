@@ -33,7 +33,7 @@ function HomeScreen(props) {
         return (
           <Button
             onPress={ () => { props.dispatch(signOut()) }}
-            title="SignOut"
+            title={ props.processedWithoutAccount ? "Auth" : "SignOut" } 
             danger
             transparent
             containerStyle={{
@@ -67,11 +67,13 @@ function HomeScreen(props) {
 }
 
 HomeScreen.propTypes = {
-  dispatch: PropTypes.function,
+  processedWithoutAccount: PropTypes.bool,
+  dispatch: PropTypes.func,
   navigation: PropTypes.object,
 }
 
 export default connect((store) => {
   return {
+    processedWithoutAccount: store.authReducer.processedWithoutAccount,
   };
 })(HomeScreen);

@@ -128,6 +128,9 @@ function getActiveRouteName( state ){
 
 RootNavigator.propTypes = {
   processedWithoutAccount: PropTypes.bool,
+  dispatch: PropTypes.func,
+  user: PropTypes.object,
+  checkingLogin: PropTypes.bool,
 }
 
 export default connect((store) => {
