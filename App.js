@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { Platform, StyleSheet, } from 'react-native';
+import { Platform, StyleSheet,StatusBar } from 'react-native';
 
 //SafeArea
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -21,7 +21,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 //setUpTheming
-import { setTheme, THEMES } from "theme/index.js";
+import  getTheme, { setTheme, THEMES,} from "theme/index.js";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 const APEARANCE_TYPES =  {
@@ -68,9 +68,12 @@ export default function App() {
     });
   }, []);
 
+  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme( );
+
   return fontsLoaded  ? (
     <AppearanceProvider>
       <ResizeComponent>
+        <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
         <Provider store={store}>
           {persistorRef.current != null &&
               (<PersistGate persistor={ persistorRef.current }>
