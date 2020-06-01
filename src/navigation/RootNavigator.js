@@ -15,7 +15,7 @@ import MainStackNavigator from "./MainStackNavigator.js";
 import AuthStackNavigator from "./AuthStackNavigator.js";
 
 //Actions
-import { setNavState } from "../actions/navActions.js";
+import { setNavState } from "actions/navActions.js";
 import { checkSignIn } from "actions/authActions.js";
 
 const Stack = createStackNavigator();
@@ -74,7 +74,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
       {...( Platform.OS == "web" ? {linking:linking} : {} ) }
     >
       <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
-        { user || props.processedWithoutAccount ? (
+        { user || props.proceedWithoutAccount ? (
           <Stack.Screen name="Main" component={MainStackNavigator}/>
         ) : (
           <Stack.Screen name="Auth" component={AuthStackNavigator}/>
@@ -127,7 +127,7 @@ function getActiveRouteName( state ){
 
 
 RootNavigator.propTypes = {
-  processedWithoutAccount: PropTypes.bool,
+  proceedWithoutAccount: PropTypes.bool,
   dispatch: PropTypes.func,
   user: PropTypes.object,
   checkingLogin: PropTypes.bool,
@@ -137,7 +137,7 @@ export default connect((store) => {
   return {
     user: store.authReducer.user,
     checkingLogin: store.authReducer.checkingLogin,
-    processedWithoutAccount: store.authReducer.processedWithoutAccount,
+    proceedWithoutAccount: store.authReducer.proceedWithoutAccount,
     currentNavAction: store.navReducer.currentNavAction,
   };
 })(RootNavigator);

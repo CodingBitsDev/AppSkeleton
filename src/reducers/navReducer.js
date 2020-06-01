@@ -1,6 +1,6 @@
 import { getActiveScreen } from "../helperFunctions/navHelpers.js";
 
-import { navTypes } from "actions/types.js";
+import { navTypes, persistTypes } from "actions/types.js";
 
 const INITIAL_STATE = {
   navState: [],
@@ -15,7 +15,7 @@ export default function reducer(state=INITIAL_STATE , action) {
         navState: action.payload.navState,
       }
     }
-    case 'persist/REHYDRATE': {
+    case persistTypes.REHYDRATE: {
       return {...state, }
     }
   }

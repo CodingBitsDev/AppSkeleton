@@ -1,4 +1,4 @@
-import { authTypes } from "actions/types.js";
+import { authTypes, persistTypes } from "actions/types.js";
 
 const INITIAL_STATE = {
   proceedWithoutAccount: false,
@@ -81,7 +81,7 @@ export default function reducer(state=INITIAL_STATE , action) {
           proceedWithoutAccount: true,
         }
       }
-      case 'persist/REHYDRATE': {
+      case persistTypes.REHYDRATE: {
         let authState = action.payload && action.payload.authReducer || {};
         return {...state,
           persistSignedIn: authState.persistSignedIn || INITIAL_STATE.persistSignedIn,
