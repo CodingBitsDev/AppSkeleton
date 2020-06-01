@@ -23,7 +23,6 @@
     "expo-localization": "~8.1.0",
     "firebase": "7.14.4",
     "i18n-js": "^3.5.1",
-    "jest": "^26.0.1",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -59,7 +58,8 @@
     "eslint": "^7.0.0",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-native": "^3.8.1",
-    "flow-bin": "^0.125.1"
+    "flow-bin": "^0.125.1",
+    "jest": "^26.0.1"
   },
   "jest": {
     "preset": "react-native"

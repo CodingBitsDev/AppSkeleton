@@ -1,5 +1,7 @@
+import { authTypes } from "actions/types.js";
+
 const INITIAL_STATE = {
-  processedWithoutAccount: false,
+  proceedWithoutAccount: false,
   user: null,
   checkingLogin: true,
   signInState: {
@@ -17,79 +19,73 @@ const INITIAL_STATE = {
 
 export default function reducer(state=INITIAL_STATE , action) {
     switch (action.type) {
-      case "NOT_SIGNED_IN": {
+      case authTypes.NOT_SIGNED_IN: {
         return {...state, checkingLogin: false,};
       }
-      case "TRYING_TO_SIGN_IN":{
+      case authTypes.TRYING_TO_SIGN_IN:{
         return {...state, 
-          loading: false,
           signInState: {...state.signInState,
             signInActive: true,
           },
         };
       }
-      case "SIGN_IN_SUCESSFULL": {
+      case authTypes.SIGN_IN_SUCESSFULL: {
         return {...state, 
           checkingLogin: false,
-          loading: false,
           signInState: {...state.signInState,
             signInActive: false,
           },
           user: action.payload.user,
           persistSignedIn: action.payload.user,
-          processedWithoutAccount: false,
+          proceedWithoutAccount: false,
         };
       }
-      case "SIGN_IN_FAILED": {
+      case authTypes.SIGN_IN_FAILED: {
         return {...state, 
-          loading: false,
           signInState: {...state.signInState,
             signInActive: false,
           },
           signInError: action.payload.message,
         };
       }
-      case "TRYING_TO_SIGN_UP":{
+      case authTypes.TRYING_TO_SIGN_UP:{
         return {...state, 
-          loading: false,
           signUpState: {...state.signUpState,
             signUpActive: true,
           },
         };
       }
-      case "SIGN_UP_SUCESSFULL": {
+      case authTypes.SIGN_UP_SUCESSFULL: {
         return {...state, 
-          loading: false,
           signUpState: {...state.signUpState,
             signUpActive: false,
           },
           user: action.payload.user,
         };
       }
-      case "SIGN_UP_FAILED": {
+      case authTypes.SIGN_UP_FAILED: {
         return {...state, 
-          loading: false,
           signUpState: {...state.signUpState,
             signUpActive: false,
           },
           signUpError: action.payload.message,
         };
       }
-      case "USER_SIGNED_OUT": {
+      case authTypes.USER_SIGNED_OUT: {
         return {...INITIAL_STATE,
           checkingLogin: false,
         }
       }
-      case "PROCEED_WITHOUT_LOGIN": {
+      case authTypes.PROCEED_WITHOUT_LOGIN: {
         return {...state,
-          processedWithoutAccount: true,
+          proceedWithoutAccount: true,
         }
       }
       case 'persist/REHYDRATE': {
         let authState = action.payload && action.payload.authReducer || {};
         return {...state,
           persistSignedIn: authState.persistSignedIn || INITIAL_STATE.persistSignedIn,
-          processedWithoutAccount: authState.processedWithoutAccount || INITIAL_STATE.processedWithoutAccount,
+          proceedWithoutAccount: authState.proceedWithoutAccount || INITIAL_STATE.proceedWithoutAccount,
         }
       }
     }

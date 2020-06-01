@@ -16,7 +16,7 @@ import AuthStackNavigator from "./AuthStackNavigator.js";
 
 //Actions
 import { setNavState } from "../actions/navActions.js";
-import { checkSignIn } from "../actions/authActions.js";
+import { checkSignIn } from "actions/authActions.js";
 
 const Stack = createStackNavigator();
 

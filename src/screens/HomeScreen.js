@@ -11,7 +11,7 @@ import Button from "reuse/Button.js";
 import MessageBoxPopup from "../screens/Popups/MessageBoxPopup.js";
 
 //Actions
-import { signOut } from "../actions/authActions.js";
+import { signOut } from "actions/authActions.js";
 
 //Hooks
 import useNavActions from "hooks/useNavActions.js";

@@ -1,14 +1,16 @@
+import { authTypes } from "src/actions/types.js";
+
 export async function checkSignIn(){
   //This code has to be changed depending on how the signinCheck is going to be done
   return( (dispatch, getState) => {
     let authState = getState().authReducer || {};
     if ( !authState.persistSignedIn ) {
       dispatch({
-        type: "NOT_SIGNED_IN",
+        type: authTypes.NOT_SIGNED_IN,
       });
     } else {
       dispatch({
-        type: "SIGN_IN_SUCESSFULL",
+        type: authTypes.SIGN_IN_SUCESSFULL,
         payload: {
           user: authState.persistSignedIn,
           relogin: true,
@@ -21,7 +23,7 @@ export async function checkSignIn(){
 export async function signIn( userName, password ){
   return( async (dispatch, getState) => {
     dispatch({
-      type: "TRYING_TO_SIGN_IN",
+      type: authTypes.TRYING_TO_SIGN_IN,
       payload: {
         userName,
         password,
@@ -32,7 +34,7 @@ export async function signIn( userName, password ){
       await timeout(1000);
       let user = { uid: "123456", name: "Test" };
       dispatch({
-        type: "SIGN_IN_SUCESSFULL",
+        type: authTypes.SIGN_IN_SUCESSFULL,
         payload: {
           relogin: false,
           userName,
@@ -43,7 +45,7 @@ export async function signIn( userName, password ){
 
     } catch(error) {
     dispatch({
-      type: "SIGN_IN_FAILED",
+      type: authTypes.SIGN_IN_FAILED,
       payload: {
         userName,
         password,
@@ -59,7 +61,7 @@ export async function signIn( userName, password ){
 export async function signUp( userName, password ){
   return( async (dispatch, getState) => {
     dispatch({
-      type: "TRYING_TO_SIGN_UP",
+      type: authTypes.TRYING_TO_SIGN_UP,
       payload: {
         userName,
         password,
@@ -70,7 +72,7 @@ export async function signUp( userName, password ){
       await timeout(1000);
       let user = { uid: "123456", name: "Test" };
       dispatch({
-        type: "SIGN_UP_SUCESSFULL",
+        type: authTypes.SIGN_UP_SUCESSFULL,
         payload: {
           userName,
           password,
@@ -81,7 +83,7 @@ export async function signUp( userName, password ){
       dispatch(signIn(userName, password));
     } catch(error) {
     dispatch({
-      type: "SIGN_UP_FAILED",
+      type: authTypes.SIGN_UP_FAILED,
       payload: {
         userName,
         password,
@@ -95,7 +97,7 @@ export async function signUp( userName, password ){
 export async function signOut(){
   return( async (dispatch, getState) => {
     //DO Stuff on server to sign user out
-    dispatch( { type: "USER_SIGNED_OUT" } )
+    dispatch( { type: authTypes.USER_SIGNED_OUT } )
 
   });
 }
@@ -106,6 +108,6 @@ function timeout(ms) {
 
 export function processedWithoutAccount(){
   return ( async (dispatch, getState) => {
-    dispatch({type: "PROCEED_WITHOUT_LOGIN" });
+    dispatch({type: authTypes.PROCEED_WITHOUT_LOGIN });
   });
 }

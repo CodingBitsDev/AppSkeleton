@@ -1,5 +1,7 @@
 import { getActiveScreen } from "../helperFunctions/navHelpers.js";
 
+import { navTypes } from "actions/types.js";
+
 const INITIAL_STATE = {
   navState: [],
   currentNavAction: null,
@@ -8,7 +10,7 @@ const INITIAL_STATE = {
 
 export default function reducer(state=INITIAL_STATE , action) {
   switch (action.type) {
-    case "NAV_STATE_CHANGED":{
+    case navTypes.NAV_STATE_CHANGED:{
       return {...state,
         navState: action.payload.navState,
       }

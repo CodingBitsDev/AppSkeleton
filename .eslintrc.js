@@ -3,6 +3,7 @@ module.exports = {
     "es6": true,
     "node": true,
     "react-native/react-native": true,
+    "jest": true,
   },
   "extends": [
     "eslint:recommended",

@@ -14,8 +14,8 @@ import Button from "reuse/Button.js";
 import IconTextInput from "reuse/IconTextInput.js";
 
 //Actions
-import { openSignInScreen, openSignUpScreen } from "../../actions/navActions.js";
-import { signIn } from "../../actions/authActions.js";
+import { openSignInScreen, openSignUpScreen } from "actions/navActions.js";
+import { signIn } from "actions/authActions.js";
 
 //CusomHooks
 import useWindowSize from "../../hooks/useWindowSize.js";

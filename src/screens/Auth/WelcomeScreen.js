@@ -20,7 +20,7 @@ import getTheme, { THEMES } from "theme/index.js";
 import translate from '../../constants/language/languages.js';
 
 //Actions
-import { processedWithoutAccount } from "../../actions/authActions.js";
+import { processedWithoutAccount } from "actions/authActions.js";
 
 function WelcomeScreen( { ...props} ){
   let {width, height} = useWindowSize(); //Only works in browser
