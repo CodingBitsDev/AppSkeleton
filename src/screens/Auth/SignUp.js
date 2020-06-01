@@ -83,7 +83,7 @@ function SignUp( { navigation, route, ...props} ){
     },
     imageStyle: {
       marginTop: height * 0.1,
-      maxHeight: height * 0.4,
+      maxHeight: height * 0.3,
       minWidth: 300,
       width: width - 100,
       height: (width - 100) * 0.75,

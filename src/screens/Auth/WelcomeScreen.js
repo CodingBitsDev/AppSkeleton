@@ -45,7 +45,7 @@ function WelcomeScreen( { ...props} ){
       position: "absolute"
     },
     imageStyle: {
-      maxHeight: height * 0.4,
+      maxHeight: height * 0.3,
       minWidth: 300,
       width: width - 100,
       height: width - 100,
@@ -53,7 +53,7 @@ function WelcomeScreen( { ...props} ){
       marginTop: height * 0.1,
     },
     elementContainer: {
-      marginTop: width > 400 ? height * 0.15: 0,
+      marginTop: width > 600 ? height * 0.15: 0,
       marginHorizontal: 15,
       minHeight: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
       justifyContent: "flex-start", 
