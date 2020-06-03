@@ -1,0 +1,551 @@
+
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200604.002116.32620.0.001.json",
+    "dumpEventTime": "2020-06-04T00:21:16Z",
+    "dumpEventTimeStamp": "1591222876953",
+    "processId": 32620,
+    "threadId": null,
+    "cwd": "/home/renji/Projects/AppSkeleton",
+    "commandLine": [
+      "/usr/local/bin/node",
+      "/home/renji/Projects/AppSkeleton/node_modules/@jest/core/node_modules/jest-worker/build/workers/processChild.js"
+    ],
+    "nodejsVersion": "v12.16.3",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.16.3",
+      "v8": "7.8.279.23-node.35",
+      "uv": "1.34.2",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.16.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1g",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.3/node-v12.16.3-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.3/node-v12.16.3.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-101-generic",
+    "osVersion": "#102-Ubuntu SMP Mon May 11 10:07:26 UTC 2020",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1823,
+        "user": 528624600,
+        "nice": 801800,
+        "sys": 133869800,
+        "idle": 1659305100,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1847,
+        "user": 522542500,
+        "nice": 282000,
+        "sys": 132115900,
+        "idle": 10880300,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1823,
+        "user": 570673900,
+        "nice": 658200,
+        "sys": 125237700,
+        "idle": 9544100,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1843,
+        "user": 524692000,
+        "nice": 704300,
+        "sys": 131895300,
+        "idle": 11094900,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1848,
+        "user": 514956700,
+        "nice": 768200,
+        "sys": 132050100,
+        "idle": 11713800,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1807,
+        "user": 510315800,
+        "nice": 403000,
+        "sys": 135450000,
+        "idle": 11511400,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1814,
+        "user": 514733200,
+        "nice": 499800,
+        "sys": 133974600,
+        "idle": 11697600,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+        "speed": 1829,
+        "user": 520256800,
+        "nice": 564800,
+        "sys": 134288500,
+        "idle": 11056500,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "wlp5s0",
+        "internal": false,
+        "mac": "f8:63:3f:70:d1:04",
+        "address": "192.168.0.133",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "ham0",
+        "internal": false,
+        "mac": "7a:79:19:1e:1d:96",
+        "address": "25.30.29.150",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wlp5s0",
+        "internal": false,
+        "mac": "f8:63:3f:70:d1:04",
+        "address": "2a02:810b:c940:29a4:d17d:c22b:76a3:740e",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wlp5s0",
+        "internal": false,
+        "mac": "f8:63:3f:70:d1:04",
+        "address": "fe80::2261:a62a:c188:3712",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 3
+      },
+      {
+        "name": "ham0",
+        "internal": false,
+        "mac": "7a:79:19:1e:1d:96",
+        "address": "2620:9b::191e:1d96",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "ham0",
+        "internal": false,
+        "mac": "7a:79:19:1e:1d:96",
+        "address": "fe80::7879:19ff:fe1e:1d96",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 4
+      }
+    ],
+    "host": "renji-ThinkPad-E580"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b46955",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000a09c8f",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b7d71e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b7da99",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d2a1f5",
+      "symbol": " [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d2a886",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d37105",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d37fb5",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d3aa6c",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d0163b",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x000000000104300e",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/local/bin/node]"
+    },
+    {
+      "pc": "0x00000000013c5b79",
+      "symbol": " [/usr/local/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2163232768,
+    "totalCommittedMemory": 2161533048,
+    "usedMemory": 1755031512,
+    "availableMemory": 87558352,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 33292560,
+        "capacity": 16759296,
+        "used": 594000,
+        "available": 16165296
+      },
+      "old_space": {
+        "memorySize": 2101223424,
+        "committedMemory": 2100275392,
+        "capacity": 1747303872,
+        "used": 1727252640,
+        "available": 20051232
+      },
+      "code_space": {
+        "memorySize": 692224,
+        "committedMemory": 678272,
+        "capacity": 578048,
+        "used": 578048,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 2101248,
+        "committedMemory": 1854440,
+        "capacity": 1251600,
+        "used": 1251600,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 25350144,
+        "committedMemory": 25350144,
+        "capacity": 25319632,
+        "used": 25319632,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16759296,
+        "used": 0,
+        "available": 16759296
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 973.532,
+    "kernelCpuSeconds": 9.42185,
+    "cpuConsumptionPercent": 156.771,
+    "maxRss": 2298638336,
+    "pageFaults": {
+      "IORequired": 11,
+      "IONotRequired": 888269
+    },
+    "fsActivity": {
+      "reads": 22984,
+      "writes": 40
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 540.59,
+    "kernelCpuSeconds": 4.17529,
+    "cpuConsumptionPercent": 86.8844,
+    "fsActivity": {
+      "reads": 22984,
+      "writes": 40
+    }
+  },
+  "libuv": [
+  ],
+  "workers": [
+  ],
+  "environmentVariables": {
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "npm_package_dependencies_redux_persist": "^6.0.0",
+    "npm_package_dependencies_react_native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "npm_package_dependencies_native_base": "^2.13.12",
+    "PAM_KWALLET5_LOGIN": "/run/user/1000/kwallet5.socket",
+    "USER": "renji",
+    "LC_TIME": "de_DE.UTF-8",
+    "npm_package_devDependencies_jest": "25.5.4",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.16.3 linux x64",
+    "XDG_SEAT": "seat0",
+    "npm_package_dependencies_add": "^2.0.6",
+    "npm_package_scripts_android": "expo start --android",
+    "npm_config_bin_links": "true",
+    "SSH_AGENT_PID": "2454",
+    "XDG_SESSION_TYPE": "x11",
+    "npm_node_execpath": "/usr/local/bin/node",
+    "npm_package_dependencies_react_native_appearance": "~0.3.3",
+    "npm_config_init_version": "1.0.0",
+    "SHLVL": "2",
+    "OLDPWD": "/home/renji/Projects/AppSkeleton",
+    "HOME": "/home/renji",
+    "LESS": "-R",
+    "DESKTOP_SESSION": "i3",
+    "npm_package_devDependencies__babel_preset_flow": "^7.9.0",
+    "npm_package_dependencies_react_native_paper": "^3.10.1",
+    "ZSH": "/home/renji/.oh-my-zsh",
+    "LSCOLORS": "Gxfxcxdxbxegedabagacad",
+    "npm_package_dependencies_react_native_keyboard_aware_scroll_view": "^0.9.1",
+    "npm_config_init_license": "MIT",
+    "XDG_SEAT_PATH": "/org/freedesktop/DisplayManager/Seat0",
+    "PAGER": "less",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_config_version_tag_prefix": "v",
+    "LC_MONETARY": "de_DE.UTF-8",
+    "LC_CTYPE": "en_US.UTF-8",
+    "npm_package_dependencies_redux_thunk": "^2.3.0",
+    "npm_package_dependencies_react_test_renderer": "^16.13.1",
+    "npm_package_dependencies_react_native_safe_area_context": "0.7.3",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+    "COLORTERM": "truecolor",
+    "TERMINATOR_DBUS_NAME": "net.tenshu.Terminator20x1a6021154d881c",
+    "npm_package_description": "This Project tries to all features and parts that are necessary for Any kind of App. It tries to not only support both Android and Ios but also the Web in one single codebase.",
+    "NVM_DIR": "/home/renji/.nvm",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_dependencies_expo_localization": "~8.1.0",
+    "npm_package_scripts_web": "expo start --web",
+    "MANDATORY_PATH": "/usr/share/gconf/i3.mandatory.path",
+    "npm_package_dependencies_react_native_reanimated": "~1.7.0",
+    "npm_package_dependencies_react_native_gesture_handler": "~1.6.0",
+    "npm_package_dependencies__react_navigation_native": "^5.2.6",
+    "LOGNAME": "renji",
+    "npm_package_dependencies_color": "^3.1.2",
+    "_": "/home/renji/.npm-global/bin/yarn",
+    "npm_package_private": "true",
+    "npm_package_jest_preset": "jest-expo",
+    "npm_package_dependencies_redux_devtools_extension": "^2.13.8",
+    "npm_config_prefix": "/home/renji/.npm-global",
+    "DEFAULTS_PATH": "/usr/share/gconf/i3.default.path",
+    "XDG_SESSION_CLASS": "user",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "XDG_SESSION_ID": "4",
+    "TERM": "xterm-256color",
+    "npm_package_devDependencies__expo_webpack_config": "0.12.0",
+    "npm_package_devDependencies__babel_core": "^7.9.6",
+    "npm_package_dependencies_redux_logger": "^3.0.6",
+    "npm_package_dependencies__react_navigation_stack": "^5.3.1",
+    "npm_package_scripts_start": "expo start",
+    "npm_config_ignore_scripts": "",
+    "npm_package_dependencies_react_native_elements": "^2.0.0",
+    "PATH": "/tmp/yarn--1591213609128-0.6041028811517637:/home/renji/Projects/AppSkeleton/node_modules/.bin:/home/renji/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/home/renji/.local/bin:/home/renji/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/renji/.npm-global/bin:/home/renji/Projects/Flutter/flutter/bin",
+    "NODE": "/usr/local/bin/node",
+    "npm_package_name": "app",
+    "LC_ADDRESS": "de_DE.UTF-8",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "XDG_SESSION_PATH": "/org/freedesktop/DisplayManager/Session1",
+    "npm_package_devDependencies_flow_bin": "^0.125.1",
+    "npm_package_devDependencies__babel_cli": "^7.8.4",
+    "npm_package_dependencies_react_redux": "^7.2.0",
+    "DISPLAY": ":0",
+    "npm_package_dependencies_react_native_web": "~0.11.7",
+    "npm_package_scripts_eject": "expo eject",
+    "LANG": "en_US.UTF-8",
+    "TERMINATOR_DBUS_PATH": "/net/tenshu/Terminator2",
+    "XDG_CURRENT_DESKTOP": "i3",
+    "LC_TELEPHONE": "de_DE.UTF-8",
+    "npm_package_devDependencies_eslint": "^7.0.0",
+    "npm_package_dependencies_redux": "^4.0.5",
+    "npm_package_dependencies_react_dom": "~16.9.0",
+    "npm_package_dependencies__react_native_community_async_storage": "^1.11.0",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "XDG_SESSION_DESKTOP": "i3",
+    "XAUTHORITY": "/home/renji/.Xauthority",
+    "npm_lifecycle_script": "jest --watch",
+    "npm_package_main": "node_modules/expo/AppEntry.js",
+    "SSH_AUTH_SOCK": "/tmp/ssh-Fb2xayQJFpOs/agent.2390",
+    "npm_package_scripts_test": "jest --watch",
+    "npm_package_scripts_ios": "expo start --ios",
+    "npm_config_version_git_message": "v%s",
+    "TERMINATOR_UUID": "urn:uuid:74282bd4-47e8-42c7-901f-be0c617d125c",
+    "LC_NAME": "de_DE.UTF-8",
+    "SHELL": "/usr/bin/zsh",
+    "PAM_KWALLET_LOGIN": "/run/user/1000/kwallet.socket",
+    "npm_lifecycle_event": "test",
+    "npm_package_version": "",
+    "npm_package_dependencies_expo_linear_gradient": "~8.1.0",
+    "QT_ACCESSIBILITY": "1",
+    "PROMPT_COMMAND": "pwd > /tmp/whereami",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"test\"],\"original\":[\"test\"]}",
+    "npm_package_dependencies_redux_promise": "^0.6.0",
+    "npm_package_dependencies_react_resize_detector": "^4.2.3",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "LC_MEASUREMENT": "de_DE.UTF-8",
+    "npm_package_dependencies_i18n_js": "^3.5.1",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_git_sign": "",
+    "GPG_AGENT_INFO": "/run/user/1000/gnupg/S.gpg-agent:0:1",
+    "LC_IDENTIFICATION": "de_DE.UTF-8",
+    "npm_package_devDependencies_eslint_plugin_react": "^7.20.0",
+    "npm_package_dependencies_react_native_screens": "~2.2.0",
+    "npm_package_dependencies__react_native_community_masked_view": "0.1.6",
+    "npm_config_strict_ssl": "true",
+    "XDG_VTNR": "1",
+    "npm_package_devDependencies_eslint_plugin_react_native": "^3.8.1",
+    "npm_package_dependencies_firebase": "7.14.4",
+    "npm_package_dependencies_color_string": "^1.5.3",
+    "PWD": "/home/renji/Projects/AppSkeleton",
+    "npm_execpath": "/home/renji/.npm-global/lib/node_modules/yarn/bin/yarn.js",
+    "npm_package_devDependencies_babel_preset_expo": "~8.1.0",
+    "npm_package_dependencies_react_native_responsive_dimensions": "^3.1.1",
+    "npm_package_dependencies_expo": "~37.0.3",
+    "XDG_DATA_DIRS": "/usr/share/i3:/usr/local/share/:/usr/share/",
+    "XDG_CONFIG_DIRS": "/etc/xdg/xdg-i3:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings",
+    "NVM_CD_FLAGS": "-q",
+    "npm_package_devDependencies_jest_expo": "^37.0.0",
+    "LC_NUMERIC": "de_DE.UTF-8",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_package_dependencies_expo_firebase_analytics": "2.3.0",
+    "npm_config_save_prefix": "^",
+    "npm_config_ignore_optional": "",
+    "LC_PAPER": "de_DE.UTF-8",
+    "VTE_VERSION": "5202",
+    "npm_package_dependencies__use_expo_font": "^2.0.0",
+    "INIT_CWD": "/home/renji/Projects/AppSkeleton",
+    "NVM_RC_VERSION": "",
+    "npm_package_jest_transformIgnorePatterns_0": "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)",
+    "npm_package_devDependencies_babel_plugin_module_resolver": "^4.0.0",
+    "npm_package_dependencies_react": "^16.13.1",
+    "NODE_ENV": "test",
+    "JEST_WORKER_ID": "1",
+    "FORCE_COLOR": "1"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 30474,
+      "hard": 30474
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ]
+}

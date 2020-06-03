@@ -16,7 +16,8 @@ import reducer from "../reducers"
 
 import getMiddlewareList from "../getMiddlewareList.js"
 
-const middleWareArgs = [thunk, promiseMiddleware].concat(getMiddlewareList());
+export const middleWareArgs = [thunk, promiseMiddleware].concat(getMiddlewareList());
+export const middleWareArgsTesting = [thunk, promiseMiddleware];
 const middleware = applyMiddleware(...middleWareArgs);
 
 const persistedReducer = persistReducer( persistStoreConfig, reducer );

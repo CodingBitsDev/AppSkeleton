@@ -50,10 +50,10 @@ export default function reducer(state=INITIAL_STATE , action) {
       //TODO
       //FirebaseAnalytics.setUserId(Constants.installationId);
       //FirebaseAnalytics.setAnalyticsCollectionEnabled(!payload.deactivateAnalytics);
-      if ( Constants.appOwnership == "expo" ){
-        //TODO
-        //FirebaseAnalytics.setDebugModeEnabled(true);
-      }
+      //if ( Constants.appOwnership == "expo" ){
+        ////TODO
+        ////FirebaseAnalytics.setDebugModeEnabled(true);
+      //}
 
       return {...state,
         deactivateAnalytics: payload.deactivateAnalytics || INITIAL_STATE.deactivateAnalytics,

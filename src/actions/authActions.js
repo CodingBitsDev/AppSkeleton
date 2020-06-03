@@ -2,7 +2,7 @@ import { authTypes } from "src/actions/types.js";
 
 export async function checkSignIn(){
   //This code has to be changed depending on how the signinCheck is going to be done
-  return( (dispatch, getState) => {
+  return( async (dispatch, getState) => {
     let authState = getState().authReducer || {};
     if ( !authState.persistSignedIn ) {
       dispatch({

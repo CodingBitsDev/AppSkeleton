@@ -10,6 +10,7 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.2.6",
     "@react-navigation/stack": "^5.3.1",
@@ -59,10 +60,14 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-native": "^3.8.1",
     "flow-bin": "^0.125.1",
-    "jest": "^26.0.1"
+    "jest": "25.5.4",
+    "jest-expo": "^37.0.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "private": true
 }
