@@ -7,7 +7,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "storybook": "concurrently --kill-others \"start-storybook -p 7007\" \"expo start \""
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
@@ -53,8 +54,15 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-flow": "^7.9.0",
     "@expo/webpack-config": "0.12.0",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react-native": "^5.3.19",
+    "@storybook/react-native-server": "^5.3.19",
+    "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "~8.1.0",
+    "concurrently": "^5.2.0",
     "eslint": "^7.0.0",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-native": "^3.8.1",
@@ -67,7 +75,7 @@
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
-    ], 
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
