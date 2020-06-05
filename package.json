@@ -2,13 +2,13 @@
   "name": "app",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "expo start --no-dev",
+    "android": "expo start --no-dev --android",
+    "ios": "expo start --no-dev --ios",
+    "web": "expo start --no-dev --web",
     "eject": "expo eject",
     "test": "jest --watch",
-    "storybook": "concurrently --kill-others \"start-storybook -p 7007\" \"expo start \""
+    "storybook": "concurrently --kill-others \"start-storybook -p 7007\" \"expo start --dev --web \""
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

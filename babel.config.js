@@ -1,6 +1,5 @@
 const paths = require('./paths.js')
 
-console.log({ ...paths })
 module.exports = function(api) {
   api.cache(false);
   return {
