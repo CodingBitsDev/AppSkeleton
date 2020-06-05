@@ -1,6 +1,6 @@
 import { CommonActions } from '@react-navigation/native';
 
-import { navTypes } from "actions/types.js";
+import { navTypes } from "src/actions/types.js";
 
 //**********************
 //*****ReduxActions*****

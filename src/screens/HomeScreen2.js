@@ -5,7 +5,7 @@ import { View, Text, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from "reuse/Button.js";
 
-import { openHomeScreen, openPopup } from "actions/navActions.js";
+import { openHomeScreen, openPopup } from "src/actions/navActions.js";
 
 //Hooks
 import useOpenPopup from "hooks/useOpenPopup.js";
