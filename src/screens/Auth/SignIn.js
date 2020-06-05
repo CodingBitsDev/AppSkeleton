@@ -13,7 +13,7 @@ import Button from "reuse/Button.js";
 import IconTextInput from "reuse/IconTextInput.js";
 
 //Actions
-import { signIn, } from "actions/authActions.js";
+import { signIn, } from "src/actions/authActions.js";
 
 //CusomHooks
 import useWindowSize from "../../hooks/useWindowSize.js";

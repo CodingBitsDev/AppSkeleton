@@ -1,4 +1,4 @@
-import { authTypes, persistTypes } from "actions/types.js";
+import { authTypes, persistTypes } from "src/actions/types.js";
 
 const INITIAL_STATE = {
   proceedWithoutAccount: false,

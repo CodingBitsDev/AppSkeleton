@@ -1,6 +1,6 @@
 import { getActiveScreen } from "../helperFunctions/navHelpers.js";
 
-import { navTypes, persistTypes } from "actions/types.js";
+import { navTypes, persistTypes } from "src/actions/types.js";
 
 const INITIAL_STATE = {
   navState: [],
