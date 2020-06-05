@@ -49,7 +49,6 @@ export default function Main() {
     setTheme( currentTheme, {
       standard: "Inter-Regular",
     });
-
   }, [ colorScheme ])
 
   let [rerender, setRerender ] = useState( Math.random() )
