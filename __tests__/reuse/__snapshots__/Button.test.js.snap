@@ -1,0 +1,649 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ComponentTest Should Render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4294967295,
+          4294967295,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when danger is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4292432719,
+          4292432719,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when disabled is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4288256409,
+          4288256409,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when info is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4284658166,
+          4284658166,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when primary is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4290935021,
+          4290935021,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when secondary is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          undefined,
+          undefined,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when styles are given 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4294967295,
+          4294967295,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when success is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4284266588,
+          4284266588,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;
+
+exports[`ComponentTest Should Render correctly when warning is true 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderRadius": 2.5,
+      "elevation": 10,
+      "justifyContent": "center",
+      "minHeight": 30,
+      "opacity": 1,
+      "overflow": "hidden",
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.34,
+      "shadowRadius": 6.27,
+    }
+  }
+>
+  <ViewManagerAdapter_ExpoLinearGradient
+    onLayout={[Function]}
+    proxiedProperties={
+      Object {
+        "colors": Array [
+          4293963086,
+          4293963086,
+        ],
+        "endPoint": undefined,
+        "locations": undefined,
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+        "startPoint": undefined,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "justifyContent": "center",
+          "padding": 10,
+        },
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#000000",
+          "fontSize": 16,
+        }
+      }
+    />
+  </ViewManagerAdapter_ExpoLinearGradient>
+</View>
+`;

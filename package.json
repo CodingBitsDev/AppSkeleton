@@ -41,7 +41,6 @@
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "react-resize-detector": "^4.2.3",
-    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
@@ -61,12 +60,21 @@
     "eslint-plugin-react-native": "^3.8.1",
     "flow-bin": "^0.125.1",
     "jest": "25.5.4",
-    "jest-expo": "^37.0.0"
+    "jest-expo": "^37.0.0",
+    "react-test-renderer": "^16.13.1"
   },
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ], 
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
     ]
   },
   "private": true

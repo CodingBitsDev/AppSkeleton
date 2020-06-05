@@ -32,6 +32,7 @@ function Button({ style, start, end, locations, ...props }){
   } else if (props.info){
     btnColor = colors.info;
   }
+
   btnColor = props.color || (style ? makeStyle(style).backgroundColor : null) || btnColor;
   btnColor = props.disabled ? props.disabledColor || colors.disabled : btnColor;
 
@@ -107,15 +108,6 @@ function Touchable(props){
   ) : (
     <TouchableOpacity {...props} />
   ));
-}
-
-function removeUndefinedFromObject({...obj}){
-  Object.keys(obj).forEach(key => {
-    if (obj[key] === undefined) {
-      delete obj[key];
-    }
-  });
-  return obj;
 }
 
 Button.propTypes = {

@@ -25,3 +25,6 @@ yarn.lock
 
 #firebase
 .firebase/*
+
+#jest
+coverage/**/*
