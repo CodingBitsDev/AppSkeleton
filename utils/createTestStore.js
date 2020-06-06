@@ -2,8 +2,11 @@ import rootReducer from "reducers/index.js";
 import { applyMiddleware, createStore } from "redux";
 import {middleWareArgsTesting} from "src/configs/store.js";
 
-export const createTestStore = (initalState) => {
-  const middleware = applyMiddleware(...middleWareArgsTesting);
+import getMiddlewareList from "src/getMiddlewareList.js"
+
+export const createTestStore = (initalState, addLogger) => {
+  let middleWareArgs = addLogger ? middleWareArgsTesting.concat(getMiddlewareList()) : middleWareArgsTesting
+  const middleware = applyMiddleware(...middleWareArgs );
   const store = createStore(rootReducer, initalState, middleware);
 
   const makeUpdateActionList = ( testStore ) => {

@@ -23,8 +23,6 @@ import { AppLoading } from 'expo';
 import  getTheme, { setTheme, THEMES,} from "theme/index.js";
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
-import { createTestStore } from "utils/createTestStore.js";
-
 const APEARANCE_TYPES =  {
   "light": THEMES.LIGHT,
   "dark": THEMES.DARK,
@@ -35,8 +33,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 export default class ScreenContainer {
-  constructor( initalStore, screen, initProps ){
-    this.store = createTestStore(initalStore || undefined);
+  constructor( store, screen, initProps ){
+    this.store = store
     this.screen = screen;
     this.initProps = initProps;
   }
