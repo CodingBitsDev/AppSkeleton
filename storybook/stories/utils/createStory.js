@@ -7,7 +7,7 @@ import ScreenContainer from "./ScreenContainer.js";
 
 import WelcomeScreen from "src/screens/Auth/WelcomeScreen.js";
 
-export const createStory = ( areaName, storyName, screen, initalStore, props ) => {
+export const createScreenStory = ( areaName, storyName, screen, initalStore, props ) => {
   let screenContainer = new ScreenContainer( {}, screen, props  )
   let Container = screenContainer.getContainer()
   

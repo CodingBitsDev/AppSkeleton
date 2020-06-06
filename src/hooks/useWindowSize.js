@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Platform, Dimensions } from 'react-native';
 
 export default function useWindowSize(friendID) {
-  let [dimensions, setDimension] = useState( { width: Dimensions.get("screen").width, height: Dimensions.get("screen").height } );
+  let [dimensions, setDimension] = useState( { width: Dimensions.get("window").width, height: Dimensions.get("window").height } );
 
   if (Platform.OS == "web"){
     useEffect ( () => {

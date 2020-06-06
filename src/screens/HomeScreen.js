@@ -51,7 +51,7 @@ function HomeScreen(props) {
 
   return (
     <SafeAreaView style={{backgroundColor: colors.background , flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text style={{ color: colors.mainTextColor }}>Home Screen</Text>
       <Button
         onPress={ () => { navigate("HomeScreen2") } }
         title="Open Home Screen 2"

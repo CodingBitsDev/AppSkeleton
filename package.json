@@ -8,7 +8,8 @@
     "web": "expo start --no-dev --web",
     "eject": "expo eject",
     "test": "jest --watch",
-    "storybook": "concurrently --kill-others \"start-storybook -p 7007\" \"expo start --dev --web \""
+    "storybook": "start-storybook -p 7007",
+    "expo": "expo start --dev --web" 
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

@@ -10,11 +10,17 @@ import { openHomeScreen, openPopup } from "src/actions/navActions.js";
 //Hooks
 import useOpenPopup from "hooks/useOpenPopup.js";
 
+//HelperFunctions
+import getTheme from "theme/index.js";
+
 function HomeScreen2(props) {
+  let { colors, styles: defaultStyles, icons, fonts, images } = getTheme();
+
   let openPopup = useOpenPopup();
+
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen 2</Text>
+    <SafeAreaView style={{backgroundColor: colors.background, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{color: colors.mainTextColor}}>Home Screen 2</Text>
       <Button
         onPress={ () => { openPopup() } }
         title="Open Empty Popup"

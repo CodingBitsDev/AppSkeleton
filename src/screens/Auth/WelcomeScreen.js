@@ -53,7 +53,7 @@ function WelcomeScreen( { ...props} ){
       marginTop: height * 0.1,
     },
     elementContainer: {
-      marginTop: width > 600 ? height * 0.15: 0,
+      //marginTop: width > 600 ? height * 0.15: 0,
       marginHorizontal: 15,
       minHeight: height - height * 0.55 - ( Platform.OS != "web" ? (height - containerHeight) : 0 ),
       justifyContent: "flex-start", 
@@ -77,35 +77,37 @@ function WelcomeScreen( { ...props} ){
         source={images.welcomeBackground}
       />
       <ScrollView contentContainerStyle={{ alignItems: "center", height, flex: 1}} style={ styles.scrollViewStyle }>
-        <Image
-          style={styles.imageStyle}
-          source={images.mainLogo}
-        />
-        <View style={styles.elementContainer}>
-          <Text style={styles.introTextStyle}> {translate("WelcomeScreen_WelcomeText")} </Text>
-          <Button
-            onPress={ () => { navigate("SignIn") } }
-            title={translate( "WelcomeScreen_SignIn" )}
-            colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
-            textStyle={{ color: colors.primaryButtonColor }}
-            primary
-            rounded
-            containerStyle={{ marginBottom: 20 }}
+        <View style={{ flex: 1, flexGrow : 1, justifyContent: "center", alignItems: "center",  }}>
+          <Image
+            style={styles.imageStyle}
+            source={images.mainLogo}
           />
-          <Button
-            onPress={ () => { navigate("SignUp") } }
-            title={translate( "WelcomeScreen_SignUp" )}
-            primary
-            transparent
-            containerStyle={{ marginBottom: 20 }}
-          />
-          <Button
-            onPress={ () => {  props.dispatch( processedWithoutAccount() ) }}
-            title={translate( "WelcomeScreen_ProceedWithoutLogin" )}
-            primary
-            transparent
-            containerStyle={{ marginBottom: 20 }}
-          />
+          <View style={styles.elementContainer}>
+            <Text style={styles.introTextStyle}> {translate("WelcomeScreen_WelcomeText")} </Text>
+            <Button
+              onPress={ () => { navigate("SignIn") } }
+              title={translate( "WelcomeScreen_SignIn" )}
+              colors={ [colors.primary, colors.primaryVariants[4], colors.primaryVariants[2],] }
+              textStyle={{ color: colors.primaryButtonColor }}
+              primary
+              rounded
+              containerStyle={{ marginBottom: 20 }}
+            />
+            <Button
+              onPress={ () => { navigate("SignUp") } }
+              title={translate( "WelcomeScreen_SignUp" )}
+              primary
+              transparent
+              containerStyle={{ marginBottom: 20 }}
+            />
+            <Button
+              onPress={ () => {  props.dispatch( processedWithoutAccount() ) }}
+              title={translate( "WelcomeScreen_ProceedWithoutLogin" )}
+              primary
+              transparent
+              containerStyle={{ marginBottom: 20 }}
+            />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

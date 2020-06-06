@@ -73,7 +73,7 @@ function RootNavigator( {user, checkingLogin, ...props} ) {
       onStateChange={(state) => { onNavStateChange(state, props) }}
       {...( Platform.OS == "web" ? {linking:linking} : {} ) }
     >
-      <Stack.Navigator  keyboardHandlingEnabled={false} mode="modal" headerMode="none" screenOptions={{ animationEnabled: false }} >
+      <Stack.Navigator  keyboardHandlingEnabled={false} headerMode="none" mode="modal" screenOptions={{ animationEnabled: false }} >
         { user || props.proceedWithoutAccount ? (
           <Stack.Screen name="Main" component={MainStackNavigator}/>
         ) : (

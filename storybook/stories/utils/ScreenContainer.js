@@ -68,24 +68,22 @@ export default class ScreenContainer {
       let { colors, styles: defaultStyles, icons, fonts, images } = getTheme( );
 
       return (
-        <div>
-          <AppearanceProvider>
-            <ResizeComponent>
-              <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
-              <Provider store={this.store}>
-                <SafeAreaProvider>
-                  <NavigationContainer>
-                    <Stack.Navigator >
-                      <Stack.Screen key="StoryBookScreen" name="StoryBookScreen">
-                        { (screenProps) => (<this.screen { ...this.initProps } {...screenProps}/>) }
-                      </Stack.Screen>
-                    </Stack.Navigator>
-                  </NavigationContainer>
-                </SafeAreaProvider>
-              </Provider>
-            </ResizeComponent>
-          </AppearanceProvider>
-        </div>
+        <AppearanceProvider>
+          <ResizeComponent>
+            <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
+            <Provider store={this.store}>
+              <SafeAreaProvider>
+                <NavigationContainer>
+                  <Stack.Navigator headerMode="none" screenOptions={{ headerShown: false }} >
+                    <Stack.Screen key="StoryBookScreen" name="StoryBookScreen">
+                      { (screenProps) => (<this.screen { ...this.initProps } {...screenProps}/>) }
+                    </Stack.Screen>
+                  </Stack.Navigator>
+                </NavigationContainer>
+              </SafeAreaProvider>
+            </Provider>
+          </ResizeComponent>
+        </AppearanceProvider>
       );
     }
   }
