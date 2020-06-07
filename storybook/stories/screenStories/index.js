@@ -2,8 +2,7 @@ import React from 'react';
 import 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
-import { createScreenStory } from "./utils/createStory.js";
-
+import { createScreenStory } from "../utils/createStory.js";
 
 //Screens
 //Auth

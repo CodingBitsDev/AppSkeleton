@@ -7,6 +7,6 @@ import { linkTo } from '@storybook/addon-links';
 
 //Other Stories
 import "./fullApp.js";
-import "./screenStories.js";
-import "./componentStories.js";
+import "./screenStories/index.js";
+import "./componentStories/index.js";
 
