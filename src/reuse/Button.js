@@ -37,6 +37,10 @@ function Button({ style, start, end, locations, ...props }){
   btnColor = props.disabled ? props.disabledColor || colors.disabled : btnColor;
 
   let textColor = getContrastColor(btnColor);
+  if (props.secondary){
+    console.log("BtnColor", btnColor)
+    console.log("TextColor", textColor)
+  }
   textColor = props.textColor || textColor;
    
   let [ paddingStyle, containerStyle ] = extractPaddingStyles(props.containerStyle);
