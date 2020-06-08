@@ -398,8 +398,8 @@ exports[`ComponentTest Should Render correctly when secondary is true 1`] = `
     proxiedProperties={
       Object {
         "colors": Array [
-          undefined,
-          undefined,
+          4294953984,
+          4294953984,
         ],
         "endPoint": undefined,
         "locations": undefined,
@@ -423,7 +423,7 @@ exports[`ComponentTest Should Render correctly when secondary is true 1`] = `
     <Text
       style={
         Object {
-          "color": "#FFFFFF",
+          "color": "#000000",
           "fontSize": 16,
         }
       }

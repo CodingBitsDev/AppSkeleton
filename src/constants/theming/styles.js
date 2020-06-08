@@ -30,5 +30,4 @@ export function getStyles(colors){
       rounded: { borderRadius: 99, },
     },
   }
-  
 }

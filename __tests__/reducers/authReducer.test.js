@@ -35,10 +35,10 @@ function testActions( type, action, testState, startState=INITIAL_STATE ){
 
 describe( "Auth Reducer", () => {
   describe( "General Tests", () => {
-  it('should return INITIAL_STATE state', () => {
-    const newState = reducer( undefined, {} );
-    expect(newState).toEqual(INITIAL_STATE);
-  });
+    it('should return INITIAL_STATE state', () => {
+      const newState = reducer( undefined, {} );
+      expect(newState).toEqual(INITIAL_STATE);
+    });
   });
 
   //ActionTests
