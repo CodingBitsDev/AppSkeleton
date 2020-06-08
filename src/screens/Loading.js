@@ -17,6 +17,6 @@ export default connect((store) => {
   return {
     checkingLogin: store.authReducer.checkingLogin,
   };
-})(Loading);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(Loading);
 
 

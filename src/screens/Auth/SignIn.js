@@ -102,7 +102,7 @@ function SignIn( { navigation, route, ...props} ){
   }
 
   useEffect( () => {
-    navigation.setOptions({
+    navigation && navigation.setOptions({
       headerTransparent: true,
       headerTintColor: colors.mainTextColor,
       headerTitle: "",
@@ -218,5 +218,5 @@ export default connect((store) => {
     wariningText: store.authReducer.signInWarning,
     errorText: store.authReducer.signInError,
   };
-})(SignIn);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(SignIn);
 

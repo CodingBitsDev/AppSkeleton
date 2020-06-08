@@ -35,4 +35,4 @@ function HomeScreen2(props) {
 export default connect((store) => {
   return {
   };
-})(HomeScreen2);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(HomeScreen2);

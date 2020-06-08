@@ -8,14 +8,12 @@ import ScreenContainer from "./ScreenContainer.js";
 
 import WelcomeScreen from "src/screens/Auth/WelcomeScreen.js";
 
-export const createScreenStory = ( areaName, storyName, screen, props ) => {
-  let { initalStore, initProps } = props || {};
-
+export const createScreenStory = ( areaName, storyName, screen, initalStore ) => {
   let store = createTestStore(initalStore || {}, true)
-  let screenContainer = new ScreenContainer( store , screen, initProps || {}  )
+  let screenContainer = new ScreenContainer( store )
   let Container = screenContainer.getContainer()
   
-  storiesOf(areaName, module).add(storyName, () => <Container/>);
+  storiesOf(areaName, module).add(storyName, () => (<Container>{React.cloneElement(screen)}</Container>) );
   return store;
 }
 

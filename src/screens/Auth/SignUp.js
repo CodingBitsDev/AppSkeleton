@@ -118,7 +118,7 @@ function SignUp( { navigation, route, ...props} ){
   }
 
   useEffect( () => {
-    navigation.setOptions({
+    navigation && navigation.setOptions({
       headerTransparent: true,
       headerTintColor: colors.mainTextColor,
       headerTitle: "",
@@ -263,10 +263,10 @@ SignUp.propTypes = {
   route: PropTypes.object,
 };
 
-export default connect((store) => {
+export default connect((store, ownProps) => {
   return {
-    signUpActive: store.authReducer.signInState.signUpActive,
+    signUpActive: store.authReducer.signUpState.signUpActive,
     wariningText: store.authReducer.signUpWarning,
     errorText: store.authReducer.signUpError,
   };
-})(SignUp);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(SignUp);

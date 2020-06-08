@@ -121,5 +121,5 @@ WelcomeScreen.propTypes = {
 export default connect((store) => {
   return {
   };
-})(WelcomeScreen);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(WelcomeScreen);
 

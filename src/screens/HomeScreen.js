@@ -28,7 +28,7 @@ function HomeScreen(props) {
   let openPopup = useOpenPopup();
 
   useEffect( () => {
-    props.navigation.setOptions({
+    props.navigation && props.navigation.setOptions({
       headerRight: () => {
         return (
           <Button
@@ -76,4 +76,4 @@ export default connect((store) => {
   return {
     processedWithoutAccount: store.authReducer.processedWithoutAccount,
   };
-})(HomeScreen);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(HomeScreen);

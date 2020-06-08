@@ -56,5 +56,5 @@ export default connect((store) => {
   return {
     popupContent: store.popupReducer.popupContent,
   };
-})(Popup);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(Popup);
 

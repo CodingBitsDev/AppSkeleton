@@ -15,7 +15,12 @@ function getParams( screeName, reducerState, params ){
 
 
 export default function useNavActions( ) {
-  const navigation = useNavigation();
+  let navigation = { dispatch: (action) => {console.warn("No navigation set but called:", action)} };
+  try {
+    navigation = useNavigation();
+  } catch(e){
+    console.warn(e)
+  }
   
   let navigate = ( screenName, screenKey, params ) => {
     let reducerState = store.getState();

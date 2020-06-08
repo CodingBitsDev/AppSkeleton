@@ -15,10 +15,10 @@ import HomeScreen from "src/screens/HomeScreen.js";
 import HomeScreen2 from "src/screens/HomeScreen2.js";
 
 //Creation of stories
-createScreenStory("Screens", "WelcomeScreen", WelcomeScreen);
-createScreenStory("Screens", "SignIn", SignIn)
-createScreenStory("Screens", "SignUp", SignUp)
+createScreenStory("Screens", "WelcomeScreen", <WelcomeScreen/>);
+createScreenStory("Screens", "SignIn", <SignIn/>)
+createScreenStory("Screens", "SignUp", <SignUp />)
 
-createScreenStory("Screens", "HomeScreen", HomeScreen )
-createScreenStory("Screens", "HomeScreen2", HomeScreen2)
+createScreenStory("Screens", "HomeScreen", <HomeScreen/> )
+createScreenStory("Screens", "HomeScreen2", <HomeScreen2/>)
 

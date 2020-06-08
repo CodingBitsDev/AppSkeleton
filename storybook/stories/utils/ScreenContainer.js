@@ -33,10 +33,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 export default class ScreenContainer {
-  constructor( store, screen, initProps ){
+  constructor( store, ){
     this.store = store
-    this.screen = screen;
-    this.initProps = initProps;
   }
 
   getContainer(){
@@ -71,13 +69,15 @@ export default class ScreenContainer {
             <StatusBar translucent backgroundColor={colors.backgroundColor} barStyle={"light-contents"}/>
             <Provider store={this.store}>
               <SafeAreaProvider>
-                <NavigationContainer>
-                  <Stack.Navigator headerMode="none" screenOptions={{ headerShown: false }} >
-                    <Stack.Screen key="StoryBookScreen" name="StoryBookScreen">
-                      { (screenProps) => (<this.screen { ...this.initProps } {...screenProps}/>) }
-                    </Stack.Screen>
-                  </Stack.Navigator>
-                </NavigationContainer>
+                { props.children }
+                {/*
+                  <NavigationContainer>
+                    <Stack.Navigator headerMode="none" screenOptions={{ headerShown: false }} >
+                      <Stack.Screen key="StoryBookScreen" name="StoryBookScreen">
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  </NavigationContainer>
+                  */}
               </SafeAreaProvider>
             </Provider>
           </ResizeComponent>

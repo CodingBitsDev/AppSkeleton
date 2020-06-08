@@ -30,4 +30,4 @@ let MessageBoxPopup = (props) => {
 export default connect((store) => {
   return {
   };
-})(MessageBoxPopup);
+}, null , (stateProps, dispatchProps, ownProps) => ({...stateProps, ...dispatchProps, ...ownProps}))(MessageBoxPopup);

@@ -5,7 +5,12 @@ import store from "src/configs/store.js";
 
 
 export default function useOpenPopup() {
-  const navigation = useNavigation();
+  let navigation = { dispatch: (action) => {console.warn("No navigation set but called:", action)} };
+  try {
+    navigation = useNavigation();
+  } catch(e){
+    console.warn(e)
+  }
   
   let openPopup = ( content, extraData ) => {
     let { closeOnOutsidePress, closeOnBackPress } = extraData || {};
